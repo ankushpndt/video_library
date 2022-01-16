@@ -1,0 +1,25 @@
+@import url("https://metal-ui.netlify.app/components/components.css");
+.history__body {
+  display: flex;
+  flex-direction: row;
+}
+.history__info {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding-left: 1rem;
+}
+.container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.remove__btn {
+  position: relative;
+  right: 1rem;
+  top: 0.3rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
