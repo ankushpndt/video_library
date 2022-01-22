@@ -1,13 +1,14 @@
 import './styles.css';
 import './Videos.css';
+import { useEffect } from 'react';
 import { VideoPlayer } from './VideoPlayer';
 import { Videos } from './Videos';
 import { Playlist } from './Playlist';
 import { User } from './Pages/Account/User';
 import { NavLink, Route, Routes } from 'react-router-dom';
-import WatchLater from './WatchLater';
+import { WatchLater } from './WatchLater';
 import LikedVideos from './LikedVideos';
-import History from './History';
+import { History } from './History';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import HomeIcon from '@mui/icons-material/Home';
 import HistoryIcon from '@mui/icons-material/History';
@@ -19,8 +20,16 @@ import { Login } from './Pages/Account/Login';
 import { SignUp } from './Pages/Account/SignUp';
 import { PrivateRoute } from './Components/PrivateRoute';
 import { useAuth } from './Context/AuthContext';
+import { useData } from './Context/DataContext';
+import { getHistory, getVideos } from './utils/ApiCall';
 export default function App() {
-  const { userLogout } = useAuth();
+  const { userLogout, login, token } = useAuth();
+  // const { isUserLoggedIn } = login;
+  const { dispatch } = useData();
+  useEffect(() => {
+    getVideos(dispatch);
+    getHistory(dispatch, token);
+  }, [dispatch]);
   return (
     <div className='App'>
       <div className='app__body'>

@@ -3,7 +3,10 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const AuthContext = createContext();
-
+const initialState = {
+  auth: {},
+};
+// const [state, dispatch] = useReducer(reducer, initialState, init)
 export const AuthProvider = ({ children }) => {
   const { state } = useLocation();
   const {

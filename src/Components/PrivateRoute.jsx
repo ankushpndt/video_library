@@ -1,11 +1,8 @@
-import { Route, Navigate } from 'react-router-dom';
+import { Route, Navigate, Routes } from 'react-router-dom';
 import { useAuth } from '../Context/AuthContext';
 import React from 'react';
-export const PrivateRoute = ({ path, ...props }) => {
+export const PrivateRoute = ({ children }) => {
   const { login } = useAuth();
-  return login ? (
-    <Route path={path} {...props} />
-  ) : (
-    <Navigate state={{ from: path }} replace to='/login' />
-  );
+
+  return login ? children : <Navigate to='/login' />;
 };
