@@ -13,16 +13,19 @@ export const AuthProvider = ({ children }) => {
     isUserLoggedIn,
     token: savedToken,
     user: userName,
+    userId: userid,
   } = JSON.parse(localStorage?.getItem('login')) || {
     isUserLoggedIn: false,
     token: null,
     user: '',
+    userId: '',
   };
 
   const [login, setLogin] = useState(isUserLoggedIn);
   const [token, setToken] = useState(savedToken);
   const [error, setError] = useState('');
   const [user, setUser] = useState(userName);
+  const [userId, setUserId] = useState(userid);
   const navigate = useNavigate();
 
   //signup
@@ -62,21 +65,27 @@ export const AuthProvider = ({ children }) => {
         }
       );
       console.log(response);
-      if (response.status === 200) {
-        loginUser(response.data);
-      }
+
+      loginUser(response.data);
+
       if (response.data) navigate(state?.from ? state.from : '/');
     } catch (error) {
       setError(error.response.data.errors);
     }
   };
-  const loginUser = ({ token, userName }) => {
+  const loginUser = ({ token, userName, userid }) => {
     setToken(token);
     setLogin(true);
     setUser(userName);
+    setUserId(userid);
     localStorage.setItem(
       'login',
-      JSON.stringify({ isUserLoggedIn: true, token, user: userName })
+      JSON.stringify({
+        isUserLoggedIn: true,
+        token,
+        user: userName,
+        userId: userid,
+      })
     );
   };
   const userLogout = async () => {
@@ -84,6 +93,7 @@ export const AuthProvider = ({ children }) => {
     setLogin(false);
     setToken('');
     setUser('');
+    setUserId('');
     navigate('/login');
   };
 
@@ -97,9 +107,11 @@ export const AuthProvider = ({ children }) => {
         token,
         userLogout,
         user,
+        userId,
       }}
     >
       {console.log(user)}
+      {console.log(userId)}
       {children}
     </AuthContext.Provider>
   );

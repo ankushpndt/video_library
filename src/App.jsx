@@ -22,7 +22,7 @@ import { PrivateRoute } from './Components/PrivateRoute';
 import { useAuth } from './Context/AuthContext';
 import { useData } from './Context/DataContext';
 import { getHistory, getVideos } from './utils/ApiCall';
-export default function App() {
+export const App = () => {
   const { userLogout, login, token } = useAuth();
   // const { isUserLoggedIn } = login;
   const { dispatch } = useData();
@@ -36,75 +36,95 @@ export default function App() {
         <header>
           <h1>Videos</h1>
         </header>
-        <aside>
-          <NavLink end className='video__route' to='/'>
-            <HomeIcon />
-            <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-              Home
-            </span>
-          </NavLink>
-          <NavLink className='video__route' to='/playlist'>
-            <PlaylistAddIcon />
-            <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-              Playlist
-            </span>
-          </NavLink>
-          <NavLink className='video__route' to='/history'>
-            <HistoryIcon />
-            <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-              History
-            </span>
-          </NavLink>
-          <NavLink className='video__route' to='/watchLater'>
-            <WatchLaterIcon />
-            <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-              Watch Later
-            </span>
-            {/* <i className='far fa-clock'></i> Watch Later{' '} */}
-          </NavLink>
-          <NavLink className='video__route' to='/likedVideos'>
-            <ThumbUpIcon />{' '}
-            <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-              Liked Videos
-            </span>
-          </NavLink>
-          <NavLink className='video__route' to='/user'>
-            <AccountCircleIcon />
-            <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-              User
-            </span>
-          </NavLink>
-          <NavLink className='video__route' to='/login'>
-            <AccountCircleIcon />
-            <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-              Login
-            </span>
-          </NavLink>
-          <NavLink
-            className='video__route'
-            activestyle={{
-              fontWeight: 'bold',
-            }}
-            to='/signup'
-          >
-            <AccountCircleIcon />
-            <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-              SignUp
-            </span>
-          </NavLink>
-          <NavLink
-            className='video__route'
-            activestyle={{
-              fontWeight: 'bold',
-            }}
-            to='/login'
-            onClick={userLogout}
-          >
-            <LogoutIcon />
-            <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-              Logout
-            </span>
-          </NavLink>
+        <aside className='aside'>
+          <ul className='menu'>
+            <li>
+              <NavLink end className='video__route' to='/'>
+                <HomeIcon />
+                <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
+                  Home
+                </span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className='video__route' to='/playlist'>
+                <PlaylistAddIcon />
+                <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
+                  Playlist
+                </span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className='video__route' to='/history'>
+                <HistoryIcon />
+                <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
+                  History
+                </span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className='video__route' to='/watchLater'>
+                <WatchLaterIcon />
+                <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
+                  Watch Later
+                </span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className='video__route' to='/likedVideos'>
+                <ThumbUpIcon />{' '}
+                <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
+                  Liked Videos
+                </span>
+              </NavLink>
+            </li>
+            <li>
+              {' '}
+              <NavLink className='video__route' to='/user'>
+                <AccountCircleIcon />
+                <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
+                  User
+                </span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className='video__route' to='/login'>
+                <AccountCircleIcon />
+                <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
+                  Login
+                </span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className='video__route'
+                activestyle={{
+                  fontWeight: 'bold',
+                }}
+                to='/signup'
+              >
+                <AccountCircleIcon />
+                <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
+                  SignUp
+                </span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className='video__route'
+                activestyle={{
+                  fontWeight: 'bold',
+                }}
+                to='/login'
+                onClick={userLogout}
+              >
+                <LogoutIcon />
+                <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
+                  Logout
+                </span>
+              </NavLink>
+            </li>
+          </ul>
         </aside>
         <Routes>
           <Route
@@ -170,4 +190,4 @@ export default function App() {
       </div>
     </div>
   );
-}
+};

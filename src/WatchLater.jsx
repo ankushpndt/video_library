@@ -11,7 +11,7 @@ export const WatchLater = () => {
   });
   useEffect(() => {
     getWatchLater(dispatch, token);
-  }, [dispatch]);
+  }, [dispatch, token]);
   return (
     <main>
       <h1>Watch Later</h1>
@@ -35,7 +35,7 @@ export const WatchLater = () => {
                     display: 'grid',
                     marginBottom: '1rem',
                   }}
-                  to={`/video/${video?.id}`}
+                  to={`/video/${video?.videoId}`}
                   key={video?.id}
                 >
                   {' '}

@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  margin: 0;
 }
 .app__body {
   font-family: sans-serif;
@@ -10,18 +9,48 @@
   grid-gap: 1.5rem;
   grid-template-areas:
     'header header header header'
-    'aside main main main'
-    'aside main main main'
-    'aside main main main';
+    'aside aside aside aside'
+    'main main main main'
+    'main main main main';
 }
-aside {
+@media screen and (min-width: 768px) {
+  .app__body {
+    font-family: sans-serif;
+    display: grid;
+    grid-template-columns: 200px 250px;
+    /* grid-auto-rows: minmax(100px, auto); */
+    grid-gap: 1.5rem;
+    grid-template-areas:
+      'header header header header'
+      'aside main main main'
+      'aside main main main'
+      'aside main main main';
+  }
+  aside {
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+  }
+}
+
+.aside {
   grid-area: aside;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 1rem;
-  gap: 1rem;
+  background-color: #fff;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
+.aside ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: #fff;
 }
 header {
   grid-area: header;
@@ -30,9 +59,9 @@ main {
   grid-area: main;
 }
 
-@media (max-width: 459px) {
+/* @media (max-width: 459px) {
   .app__body {
     display: flex;
     flex-direction: column;
   }
-}
+} */

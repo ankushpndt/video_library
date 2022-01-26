@@ -1,16 +1,18 @@
 import { useParams } from 'react-router-dom';
-import { usePlaylist } from './playlistContext';
 import { useEffect, useState } from 'react';
 import YouTube from 'react-youtube';
 import './Videos.css';
-import { PlaylistAdd } from './PlaylistAdd';
 import { useData } from './Context/DataContext';
-import { addToHistory, getHistory, addToWatchLater } from './utils/ApiCall';
+import { Modal } from './Components/Modal';
+import {
+  addToHistory,
+  addToWatchLater,
+  addToLikedVideos,
+  getPlaylist,
+} from './utils/ApiCall';
 import { useAuth } from './Context/AuthContext';
 export const VideoPlayer = () => {
-  const [playlistWindow, setPlaylistWindow] = useState(false);
   const [sizeOfWindow, setSizeOfWindow] = useState(window.innerWidth);
-  const { playlistDispatch, videoData } = usePlaylist();
   const { videoList, dispatch } = useData();
   const { videoId } = useParams();
   const getVideoDetails = (videos, videoId) =>
@@ -26,11 +28,14 @@ export const VideoPlayer = () => {
   window.onresize = () => {
     setSizeOfWindow(window.innerWidth);
   };
-  useEffect(() => {
-    getHistory(dispatch, token);
-  }, [dispatch]);
+
   const { token } = useAuth();
-  console.log(video);
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
   return (
     <main>
       <div className='video__responsive'>
@@ -50,10 +55,7 @@ export const VideoPlayer = () => {
             <i
               className='fas fa-thumbs-up'
               onClick={() =>
-                playlistDispatch({
-                  type: 'ADD_TO_LIKEDVIDEOS',
-                  payload: { video },
-                })
+                addToLikedVideos({ dispatch, token, _id: video?._id })
               }
             ></i>
             <i className='fas fa-thumbs-down'></i>
@@ -66,33 +68,14 @@ export const VideoPlayer = () => {
               {' '}
               Later
             </i>
-            <button
-              className='playlist__btn'
-              onClick={() =>
-                // playlistDispatch({
-                //   type: "ADD_VIDEO_TO_PLAYLIST",
-                //   payload: { video }
-                // })
-                setPlaylistWindow(() => true)
-              }
-            >
-              <img
-                src='https://www.flaticon.com/svg/vstatic/svg/565/565264.svg?token=exp=1619181393~hmac=3f428053dcf40b92c068e102fc48613f'
-                alt=''
-              />
+            <button className=' playlist__btn' onClick={toggleModal}>
               Playlist
-              {playlistWindow ? (
-                <PlaylistAdd
-                  video={video}
-                  playlistWindow={playlistWindow}
-                  setPlaylistWindow={setPlaylistWindow}
-                />
-              ) : (
-                ''
-              )}
             </button>
           </span>
         </div>
+        {modal && (
+          <Modal toggleModal={toggleModal} modal={modal} videoId={videoId} />
+        )}
       </ul>
     </main>
   );

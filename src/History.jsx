@@ -3,13 +3,17 @@ import './History.css';
 import { useData } from './Context/DataContext';
 import { useAuth } from './Context/AuthContext';
 import { deleteFromHistory } from './utils/ApiCall';
+import { useEffect } from 'react';
+import { getHistory } from './utils/ApiCall';
 export const History = () => {
   const { history, dispatch, videoList } = useData();
   const { token } = useAuth();
   const extractVideoFromHistory = videoList?.filter((video) => {
     return history?.find((el) => el._id === video._id);
   });
-
+  useEffect(() => {
+    getHistory(dispatch, token);
+  }, [dispatch, token]);
   return (
     <main>
       <h1>History</h1>
@@ -36,7 +40,7 @@ export const History = () => {
                     padding: '1rem',
                     width: '45vw',
                   }}
-                  to={`/video/${video?.id}`}
+                  to={`/video/${video?.videoId}`}
                   key={i}
                 >
                   {' '}
