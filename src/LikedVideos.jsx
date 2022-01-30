@@ -6,6 +6,7 @@ import { useData } from './Context/DataContext';
 import { deleteFromLikedVideos } from './utils/ApiCall';
 import { useAuth } from './Context/AuthContext';
 import { getLikedVideos } from './utils/ApiCall';
+import DeleteIcon from '@mui/icons-material/Delete';
 export default function LikedVideos() {
   const { likedVideo, dispatch, videoList } = useData();
   const { token } = useAuth();
@@ -29,7 +30,7 @@ export default function LikedVideos() {
                     deleteFromLikedVideos({ dispatch, token, _id: video?._id })
                   }
                 >
-                  <i className='fas fa-trash'></i>
+                  <DeleteIcon />
                 </button>
 
                 <Link

@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import './History.css';
+
 import { useData } from './Context/DataContext';
 import { useAuth } from './Context/AuthContext';
 import { deleteFromHistory } from './utils/ApiCall';
 import { useEffect } from 'react';
 import { getHistory } from './utils/ApiCall';
+import DeleteIcon from '@mui/icons-material/Delete';
 export const History = () => {
   const { history, dispatch, videoList } = useData();
   const { token } = useAuth();
@@ -17,7 +19,7 @@ export const History = () => {
   return (
     <main>
       <h1>History</h1>
-      <div className='history__item'>
+      <div className='video__item'>
         <ul>
           {extractVideoFromHistory?.map((video, i) => {
             return (
@@ -28,17 +30,13 @@ export const History = () => {
                     deleteFromHistory({ dispatch, token, _id: video?._id })
                   }
                 >
-                  <i className='fas fa-trash'></i>
+                  <DeleteIcon />
                 </button>
                 <Link
                   style={{
                     textDecoration: 'none',
                     color: 'black',
-                    backgroundColor: '#f3f4f6',
                     display: 'grid',
-                    marginBottom: '1rem',
-                    padding: '1rem',
-                    width: '45vw',
                   }}
                   to={`/video/${video?.videoId}`}
                   key={i}
@@ -47,8 +45,8 @@ export const History = () => {
                   <div className='history__body'>
                     <img
                       src={video?.image}
-                      width='220'
-                      height='138'
+                      width='370'
+                      height=' auto'
                       alt='error'
                     />
                     <div className='history__info'>

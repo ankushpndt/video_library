@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../Context/AuthContext';
 import { useData } from '../Context/DataContext';
+import { Playlist } from '../Playlist';
 
 import {
   togglePlaylist,
@@ -24,7 +25,7 @@ export const Modal = ({ modal, toggleModal, videoId }) => {
   for (let i of playlist) {
     playlistId = i?._id;
   }
-
+  console.log(playlistId);
   useEffect(() => {
     getPlaylist({ token, dispatch, userId });
   }, [token, dispatch]);
@@ -32,23 +33,20 @@ export const Modal = ({ modal, toggleModal, videoId }) => {
     (video) => video?.videoId === videoId
   );
   const { _id: vId } = getVideoDetails;
-  let extractVideoIdFromPlaylist;
-  for (let i of playlist) {
-    extractVideoIdFromPlaylist = i.videos.find((el) => el === vId);
-  }
-  console.log(extractVideoIdFromPlaylist);
+  console.log('videoId from db', vId);
   const createPlaylist = (e) => {
     e.preventDefault();
     setPlaylistInput('');
     createPlaylistName({ dispatch, token, vId, userId, playlistInput });
     setPlaylistInput(playlistInput);
   };
-  const checkFunc = extractVideoIdFromPlaylist ? true : false;
-  console.log(checkFunc);
-  const checkboxHandler = () => {
-    checkFunc
-      ? togglePlaylist({ dispatch, token, playlistId, vId })
-      : togglePlaylist({ dispatch, token, playlistId, vId });
+
+  const checkFunc = ({ playlistId }) => {
+    const getPlaylistById = playlist?.filter((el) => el?._id === playlistId);
+
+    return getPlaylistById[0]?.videos?.find((videoItem) => {
+      return videoItem === vId;
+    });
   };
 
   return (
@@ -63,8 +61,15 @@ export const Modal = ({ modal, toggleModal, videoId }) => {
                   <input
                     type='checkbox'
                     id='cb'
-                    checked={checkFunc}
-                    onChange={checkboxHandler}
+                    checked={checkFunc({ playlistId: el?._id })}
+                    onChange={() =>
+                      togglePlaylist({
+                        dispatch,
+                        token,
+                        playlistId: el?._id,
+                        vId,
+                      })
+                    }
                   />{' '}
                   <label htmlFor='cb'>{el?.name}</label>
                 </li>

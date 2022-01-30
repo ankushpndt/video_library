@@ -1,0 +1,20 @@
+.playlist__ov {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.playlist__transparent__btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding-right: 1rem;
+}
+.remove__btn {
+  position: relative;
+  right: 1rem;
+  top: 0.3rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

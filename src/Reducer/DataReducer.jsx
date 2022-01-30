@@ -50,7 +50,7 @@ export const DataReducer = (state, { type, payload }) => {
       const currentPlaylist = state.playlist.find(
         (el) => el._id === payload.data._id
       );
-      console.log(currentPlaylist);
+      // console.log(currentPlaylist);
       const videoIsPresentInPlaylist = currentPlaylist?.videos.find(
         (el) => el === payload.videoId
       );
@@ -58,9 +58,17 @@ export const DataReducer = (state, { type, payload }) => {
         ? addVideoToPlaylist(state, payload.videoId, payload.data._id)
         : deleteVideoFromPlaylist(state, payload.videoId, payload.data._id);
     case 'DELETE_PLAYLIST':
-      return { ...state, playlist: payload };
+      return {
+        ...state,
+        playlist: state.playlist?.filter((el) => el?._id !== payload?._id),
+      };
     case 'RENAME_PLAYLIST':
-      return { ...state, playlist: payload };
+      return {
+        ...state,
+        playlist: state.playlist?.map((el) =>
+          el._id === payload._id ? { ...el, name: payload.name } : el
+        ),
+      };
     default:
       return state;
   }

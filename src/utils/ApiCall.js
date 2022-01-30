@@ -19,7 +19,6 @@ export const getLikedVideos = async (dispatch, token) => {
       type: 'GET_LIKEDVIDEOS',
       payload: response.data.likedVideos,
     });
-    console.log(response);
   } catch (err) {
     console.log(err);
   }
@@ -31,7 +30,7 @@ export const addToLikedVideos = async ({ dispatch, token, _id }) => {
       {},
       { headers: { 'auth-token': token } }
     );
-    console.log(response);
+
     dispatch({
       type: 'ADD_TO_LIKEDVIDEOS',
       payload: response.data.updatedLikedVideos,
@@ -47,13 +46,13 @@ export const deleteFromLikedVideos = async ({ dispatch, token, _id }) => {
 
       { headers: { 'auth-token': token } }
     );
-    console.log(response);
+
     dispatch({
       type: 'DELETE_FROM_LIKEDVIDEOS',
       payload: response.data.updatedLikedVideos,
     });
   } catch (err) {
-    console.log(err);
+    console.log(err.response);
   }
 };
 export const getWatchLater = async (dispatch, token) => {
@@ -62,7 +61,6 @@ export const getWatchLater = async (dispatch, token) => {
       headers: { 'auth-token': token },
     });
     dispatch({ type: 'GET_WATCHLATER', payload: response.data.watchLater });
-    console.log(response);
   } catch (err) {
     console.log(err);
   }
@@ -74,7 +72,7 @@ export const addToWatchLater = async ({ dispatch, token, _id }) => {
       {},
       { headers: { 'auth-token': token } }
     );
-    console.log(response);
+
     dispatch({
       type: 'ADD_TO_WATCHLATER',
       payload: response.data.updatedWatchLater,
@@ -90,7 +88,7 @@ export const deleteFromWatchLater = async ({ dispatch, token, _id }) => {
 
       { headers: { 'auth-token': token } }
     );
-    console.log(response);
+
     dispatch({
       type: 'DELETE_FROM_WATCHLATER',
       payload: response.data.watchLater,
@@ -104,10 +102,10 @@ export const getPlaylist = async ({ dispatch, token, userId }) => {
     const response = await axios.get(`${API_URL}/playlist/${userId}`, {
       headers: { 'auth-token': token },
     });
-    console.log(response);
+
     dispatch({ type: 'GET_PLAYLIST', payload: response.data.playlists });
   } catch (err) {
-    console.log(err);
+    console.log(err.response);
   }
 };
 export const createPlaylistName = async ({
@@ -124,7 +122,6 @@ export const createPlaylistName = async ({
       { headers: { 'auth-token': token } }
     );
     dispatch({ type: 'CREATE_PLAYLIST', payload: response.data.playlist });
-    console.log(response);
   } catch (err) {
     console.log(err.response);
   }
@@ -142,7 +139,7 @@ export const togglePlaylist = async ({ dispatch, token, playlistId, vId }) => {
         headers: { 'auth-token': token },
       }
     );
-    console.log(response);
+
     dispatch({
       type: 'TOGGLE_PLAYLIST',
       payload: { data: response.data.updatedPlaylist, videoId: vId },
@@ -151,7 +148,8 @@ export const togglePlaylist = async ({ dispatch, token, playlistId, vId }) => {
     console.log(err);
   }
 };
-export const deletePlaylist = async (dispatch, token, playlistId) => {
+export const deletePlaylist = async ({ dispatch, token, playlistId }) => {
+  console.log(playlistId);
   try {
     const response = await axios.delete(
       `${API_URL}/playlist/delete/${playlistId}`,
@@ -159,23 +157,35 @@ export const deletePlaylist = async (dispatch, token, playlistId) => {
         headers: { 'auth-token': token },
       }
     );
-    dispatch({ type: 'DELETE_PLAYLIST', payload: response.data.playlist });
+    dispatch({
+      type: 'DELETE_PLAYLIST',
+      payload: response.data.deletedPlaylist,
+    });
   } catch (err) {
-    console.log(err);
+    console.log(err.response);
   }
 };
-export const renamePlaylist = async (dispatch, playlistId, newName, token) => {
+export const renamePlaylist = async ({
+  dispatch,
+  playlistId,
+  newName,
+  token,
+}) => {
   try {
     const response = await axios.post(
       `${API_URL}/playlist/update/${playlistId}`,
       {
-        name: newName,
+        newName,
       },
       {
         headers: { 'auth-token': token },
       }
     );
-    dispatch({ type: 'RENAME_PLAYLIST', payload: response.data.playlist });
+
+    dispatch({
+      type: 'RENAME_PLAYLIST',
+      payload: response.data.updatedPlaylistName,
+    });
   } catch (err) {
     console.log(err.response);
   }
@@ -186,7 +196,6 @@ export const getHistory = async (dispatch, token) => {
       headers: { 'auth-token': token },
     });
     dispatch({ type: 'GET_HISTORY', payload: response.data.history });
-    // console.log(response);
   } catch (err) {
     console.log(err.response);
   }
@@ -201,7 +210,6 @@ export const addToHistory = async ({ dispatch, _id, token }) => {
       }
     );
     dispatch({ type: 'ADD_TO_HISTORY', payload: response.data.updatedHistory });
-    // console.log(response);
   } catch (err) {
     console.log(err.response);
   }
@@ -215,7 +223,7 @@ export const deleteFromHistory = async ({ dispatch, _id, token }) => {
         headers: { 'auth-token': token },
       }
     );
-    // console.log(response);
+
     dispatch({
       type: 'DELETE_FROM_HISTORY',
       payload: response.data.history,

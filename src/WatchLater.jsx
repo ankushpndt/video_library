@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useData } from './Context/DataContext';
 import { getWatchLater, deleteFromWatchLater } from './utils/ApiCall';
 import { useAuth } from './Context/AuthContext';
+import DeleteIcon from '@mui/icons-material/Delete';
 export const WatchLater = () => {
   const { watchLater, dispatch, videoList } = useData();
   const { token } = useAuth();
@@ -26,7 +27,7 @@ export const WatchLater = () => {
                     deleteFromWatchLater({ dispatch, token, _id: video?._id })
                   }
                 >
-                  <i className='fas fa-trash' style={{ color: 'white' }}></i>
+                  <DeleteIcon />
                 </button>
                 <Link
                   style={{

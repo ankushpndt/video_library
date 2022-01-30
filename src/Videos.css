@@ -1,4 +1,19 @@
 @import url('https://metal-ui.netlify.app/components/components.css');
+.video__player {
+  height: 100%;
+}
+/* .video__responsive {
+  height: 100%;
+} */
+/* .youtube__player {
+  position: relative;
+  padding-top: 56.25%;
+}
+.y__player {
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
 .video__route {
   text-decoration: none;
   color: black;
@@ -31,7 +46,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 800px;
+  /* width: 800px; */
+  padding-top: 0.5rem;
 }
 .playlist__btn {
   display: flex;

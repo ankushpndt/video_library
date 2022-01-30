@@ -1,19 +1,96 @@
 * {
   box-sizing: border-box;
 }
-.app__body {
+.App {
+  margin: 1rem;
+}
+/* .app__body {
   font-family: sans-serif;
   display: grid;
   grid-template-columns: 200px 250px;
-  /* grid-auto-rows: minmax(100px, auto); */
+
   grid-gap: 1.5rem;
   grid-template-areas:
     'header header header header'
     'aside aside aside aside'
     'main main main main'
     'main main main main';
+} */
+
+.menu li {
+  list-style: none;
 }
-@media screen and (min-width: 768px) {
+.logo {
+  text-decoration: none;
+  color: black;
+}
+
+aside {
+  grid-area: aside;
+}
+header {
+  grid-area: header;
+}
+main {
+  grid-area: main;
+}
+.m__menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mobile__menu {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  padding: 1rem;
+}
+.menu__drawer {
+  background-color: var(--color-background-2);
+  padding: 0 2rem;
+  position: absolute;
+  top: 4rem;
+  left: 0;
+
+  max-height: 0px;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+
+  transition: all 0.5s ease;
+}
+
+.menu__drawer li {
+  width: 100%;
+  text-align: center;
+}
+
+.menu__link {
+  display: flex;
+  width: 100%;
+  padding: 1rem 0;
+  text-decoration: none;
+  color: black;
+}
+.menu__link:hover {
+  background-color: black;
+  color: white;
+}
+.menu__drawer__active {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.aside {
+  display: none;
+}
+@media screen and (min-width: 640px) {
+  .mobile__menu {
+    display: none;
+  }
+  .aside {
+    display: grid;
+  }
   .app__body {
     font-family: sans-serif;
     display: grid;
@@ -21,13 +98,11 @@
     /* grid-auto-rows: minmax(100px, auto); */
     grid-gap: 1.5rem;
     grid-template-areas:
-      'header header header header'
       'aside main main main'
       'aside main main main'
       'aside main main main';
   }
-  aside {
-    grid-area: aside;
+  .aside {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -36,32 +111,3 @@
     gap: 1rem;
   }
 }
-
-.aside {
-  grid-area: aside;
-  background-color: #fff;
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
-  position: fixed;
-  width: 100%;
-  z-index: 3;
-}
-.aside ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  overflow: hidden;
-  background-color: #fff;
-}
-header {
-  grid-area: header;
-}
-main {
-  grid-area: main;
-}
-
-/* @media (max-width: 459px) {
-  .app__body {
-    display: flex;
-    flex-direction: column;
-  }
-} */
