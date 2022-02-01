@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../Context/AuthContext';
 import { useData } from '../Context/DataContext';
-import { Playlist } from '../Playlist';
 
 import {
   togglePlaylist,

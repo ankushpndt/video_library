@@ -1,9 +1,9 @@
 * {
   box-sizing: border-box;
 }
-.App {
+/* .App {
   margin: 1rem;
-}
+} */
 /* .app__body {
   font-family: sans-serif;
   display: grid;
@@ -95,9 +95,10 @@ main {
     font-family: sans-serif;
     display: grid;
     grid-template-columns: 200px 250px;
-    /* grid-auto-rows: minmax(100px, auto); */
+
     grid-gap: 1.5rem;
     grid-template-areas:
+      'header header header header'
       'aside main main main'
       'aside main main main'
       'aside main main main';

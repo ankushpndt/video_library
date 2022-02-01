@@ -24,6 +24,7 @@ import { PrivateRoute } from './Components/PrivateRoute';
 import { useAuth } from './Context/AuthContext';
 import { useData } from './Context/DataContext';
 import { getHistory, getVideos } from './utils/ApiCall';
+import { Searchbar } from './Components/Searchbar';
 export const App = () => {
   const { userLogout, login, token } = useAuth();
 
@@ -37,6 +38,15 @@ export const App = () => {
   return (
     <div className='App'>
       <div className='app__body'>
+        <header
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            paddingTop: '1rem',
+          }}
+        >
+          <Searchbar />
+        </header>
         <aside className='aside'>
           <Link to='/' className='logo'>
             <PlayCircleIcon />

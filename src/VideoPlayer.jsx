@@ -22,9 +22,9 @@ export const VideoPlayer = () => {
     videos?.find((video) => video.videoId === videoId);
   const video = getVideoDetails(videoList, videoId);
   const opts = {
-    height: sizeOfWindow > 900 ? '550' : '300',
+    // height: sizeOfWindow > 900 ? '550' : '300',
     // width: '853',
-    width: '100%',
+    // width: '70%',
     // height: '100%',
     playerVars: {
       autoplay: 1,
