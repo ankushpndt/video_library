@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { PlaylistVideoCard } from './PlaylistVideoCard';
-import { renamePlaylist, deletePlaylist } from './utils/ApiCall';
-import { useAuth } from './Context/AuthContext';
-import { useData } from './Context/DataContext';
+import { renamePlaylist, deletePlaylist } from '../../utils/ApiCall';
+import { useAuth } from '../../Context/AuthContext';
+import { useData } from '../../Context/DataContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import './Playlist.css';

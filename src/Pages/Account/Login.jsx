@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthContext';
 import React, { useState } from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { TextField } from '@mui/material';
+import './Account.css';
 export const Login = () => {
   const { loginWithCredentials, error } = useAuth();
 
@@ -15,8 +17,7 @@ export const Login = () => {
   };
 
   return (
-    <>
-      {/* <h1>This is login page</h1> */}
+    <div className='login'>
       <form
         onSubmit={submitHandler}
         style={{
@@ -24,48 +25,57 @@ export const Login = () => {
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'column',
-          margin: '6rem auto',
+          margin: '4rem auto 2rem auto',
           padding: '4rem',
           border: '2px solid #f0f0f0',
+          width: '20rem',
         }}
       >
-        <label>
-          Email:{' '}
-          <input
-            type='text'
-            name='email'
-            placeholder='Enter your email here'
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <div className='email__error'>{error && error.email}</div>
+        <h2>Login</h2>
+        <br />
+        <TextField
+          id='standard__basic'
+          label='Email'
+          type='text'
+          name='email'
+          helperText='Enter your email here'
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          value={email}
+        />
+
         <br />
         <br />
-        <label>
-          Password:{' '}
-          <input
-            type='password'
-            name='password'
-            placeholder='Enter your password here'
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <div className='password__error'>{error && error.password}</div>
+
+        <TextField
+          id='standard__basic'
+          label='Password'
+          type='password'
+          name='password'
+          helperText='Enter your password here'
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          value={password}
+        />
+
+        {/* <div className='name__error'>{errorMessage !== '' && errorMessage}</div> */}
         <br />
-        <input type='submit' value='Login' />
+        {/*Login button*/}
+        <input type='submit' value='LOGIN' id='login__btn__outlined' />
+        <br />
         <p>
           <NavLink
             style={{
               textDecoration: 'none',
-              color: '#3B82F6',
+              color: 'black',
             }}
+            activeStyle={{ fontWeight: 'bold' }}
             to='/signup'
           >
             Create an account
           </NavLink>
         </p>
       </form>
-    </>
+    </div>
   );
 };

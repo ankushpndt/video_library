@@ -1,10 +1,10 @@
 import React from 'react';
-import { useData } from './Context/DataContext';
+import { useData } from '../../Context/DataContext';
 import { Link } from 'react-router-dom';
-import './Videos.css';
+import '../../Videos.css';
 import { v4 as uuidv4 } from 'uuid';
-import { togglePlaylist } from './utils/ApiCall';
-import { useAuth } from './Context/AuthContext';
+import { togglePlaylist } from '../../utils/ApiCall';
+import { useAuth } from '../../Context/AuthContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import './Playlist.css';
 export const PlaylistVideoCard = ({ videoId, playlistId }) => {

@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
-import './Videos.css';
-import { useData } from './Context/DataContext';
-import { deleteFromLikedVideos } from './utils/ApiCall';
-import { useAuth } from './Context/AuthContext';
-import { getLikedVideos } from './utils/ApiCall';
+import '../../Videos.css';
+import { useData } from '../../Context/DataContext';
+import { getLikedVideos, deleteFromLikedVideos } from '../../utils/ApiCall';
+import { useAuth } from '../../Context/AuthContext';
+
 import DeleteIcon from '@mui/icons-material/Delete';
 export default function LikedVideos() {
   const { likedVideo, dispatch, videoList } = useData();

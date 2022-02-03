@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { useData } from './Context/DataContext';
-import './Videos.css';
-import { deletePlaylist, getPlaylist } from './utils/ApiCall';
-import { useAuth } from './Context/AuthContext';
+import { useData } from '../../Context/DataContext';
+import '../../Videos.css';
+import { deletePlaylist, getPlaylist } from '../../utils/ApiCall';
+import { useAuth } from '../../Context/AuthContext';
 
 import { PlaylistOverview } from './PlaylistOverview';
 

@@ -28,8 +28,6 @@ export const SearchBox = ({ setToggleDropbox, searchTerm }) => {
           <div className='searchBox__empty'>No results found</div>
         </>
       )}
-
-      {/* {searchedUsers?.status === 'pending' && <>Loading...</>} */}
     </div>
   );
 };

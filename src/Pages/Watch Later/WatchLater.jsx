@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useData } from './Context/DataContext';
-import { getWatchLater, deleteFromWatchLater } from './utils/ApiCall';
-import { useAuth } from './Context/AuthContext';
+import { useData } from '../../Context/DataContext';
+import { getWatchLater, deleteFromWatchLater } from '../../utils/ApiCall';
+import { useAuth } from '../../Context/AuthContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 export const WatchLater = () => {
   const { watchLater, dispatch, videoList } = useData();

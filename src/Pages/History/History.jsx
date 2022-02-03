@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
 import './History.css';
-
-import { useData } from './Context/DataContext';
-import { useAuth } from './Context/AuthContext';
-import { deleteFromHistory } from './utils/ApiCall';
+import { useData } from '../../Context/DataContext';
+import { getHistory, deleteFromHistory } from '../../utils/ApiCall';
+import { useAuth } from '../../Context/AuthContext';
 import { useEffect } from 'react';
-import { getHistory } from './utils/ApiCall';
+
 import DeleteIcon from '@mui/icons-material/Delete';
 export const History = () => {
   const { history, dispatch, videoList } = useData();
