@@ -1,13 +1,11 @@
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthContext';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { TextField } from '@mui/material';
 import './Account.css';
 export const Login = () => {
-  const { loginWithCredentials, error } = useAuth();
+  const { loginWithCredentials } = useAuth();
 
-  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

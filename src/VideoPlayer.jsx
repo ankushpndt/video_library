@@ -16,7 +16,7 @@ import {
 } from './utils/ApiCall';
 import { useAuth } from './Context/AuthContext';
 export const VideoPlayer = () => {
-  const [sizeOfWindow, setSizeOfWindow] = useState(window.innerWidth);
+  // const [sizeOfWindow, setSizeOfWindow] = useState(window.innerWidth);
   const { videoList, dispatch, likedVideo } = useData();
   const { videoId } = useParams();
   const getVideoDetails = (videos, videoId) =>
@@ -31,9 +31,9 @@ export const VideoPlayer = () => {
       autoplay: 1,
     },
   };
-  window.onresize = () => {
-    setSizeOfWindow(window.innerWidth);
-  };
+  // window.onresize = () => {
+  //   setSizeOfWindow(window.innerWidth);
+  // };
 
   const { token } = useAuth();
   const [modal, setModal] = useState(false);

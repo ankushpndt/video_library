@@ -27,7 +27,7 @@ export const Modal = ({ modal, toggleModal, videoId }) => {
 
   useEffect(() => {
     getPlaylist({ token, dispatch, userId });
-  }, [token, dispatch]);
+  }, [token, dispatch, userId]);
   const getVideoDetails = videoList?.find(
     (video) => video?.videoId === videoId
   );

@@ -7,8 +7,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import './Playlist.css';
 export const PlaylistOverview = ({ playlistItem }) => {
-  const { dispatch, playlist } = useData();
-  const { token, userId } = useAuth();
+  const { dispatch } = useData();
+  const { token } = useAuth();
   const [name, setName] = useState(playlistItem?.name);
   return (
     <div>

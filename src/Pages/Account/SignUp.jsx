@@ -1,15 +1,13 @@
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthContext';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { TextField } from '@mui/material';
 import './Account.css';
 export const SignUp = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const { signUpWithCredentials, error } = useAuth();
+  const { signUpWithCredentials } = useAuth();
 
   async function submitHandler(e) {
     e.preventDefault();

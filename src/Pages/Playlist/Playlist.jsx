@@ -11,7 +11,7 @@ export const Playlist = () => {
   const { token, userId } = useAuth();
   useEffect(() => {
     getPlaylist({ dispatch, token, userId });
-  }, [dispatch, token]);
+  }, [dispatch, token, userId]);
 
   return (
     <main className='playlist__container'>
