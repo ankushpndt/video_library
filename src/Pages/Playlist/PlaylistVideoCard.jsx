@@ -15,10 +15,10 @@ export const PlaylistVideoCard = ({ videoId, playlistId }) => {
 
   return (
     <div className='playlist__video__item'>
-      <ul>
+      <ul className='playlist__video__list'>
         <div className='playlist' key={uuidv4()}>
           <button
-            className='remove__btn'
+            className='playlist__remove__btn'
             onClick={() =>
               togglePlaylist({
                 dispatch,
@@ -40,20 +40,16 @@ export const PlaylistVideoCard = ({ videoId, playlistId }) => {
             to={`/video/${videosFromPlaylist?.videoId}`}
           >
             {' '}
-            <div className='video__body'>
-              <img
-                src={videosFromPlaylist?.image}
-                width='370'
-                height=' auto'
-                alt='error'
-              />
+            <div className='playlist__video__body'>
+              <img src={videosFromPlaylist?.image} alt='error' />
+
               <div style={{ marginTop: '1rem' }}>
                 {videosFromPlaylist?.title}
+                <p>
+                  {videosFromPlaylist?.views} •{' '}
+                  <span>{videosFromPlaylist?.date}</span>
+                </p>
               </div>
-              <p>
-                {videosFromPlaylist?.views} •{' '}
-                <span>{videosFromPlaylist?.date}</span>
-              </p>
             </div>
           </Link>
         </div>

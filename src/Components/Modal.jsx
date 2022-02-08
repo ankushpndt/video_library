@@ -24,7 +24,7 @@ export const Modal = ({ modal, toggleModal, videoId }) => {
   for (let i of playlist) {
     playlistId = i?._id;
   }
-  console.log(playlistId);
+
   useEffect(() => {
     getPlaylist({ token, dispatch, userId });
   }, [token, dispatch]);
@@ -51,7 +51,7 @@ export const Modal = ({ modal, toggleModal, videoId }) => {
   return (
     <>
       {modal && (
-        <div className='modal'>
+        <div>
           <div onClick={toggleModal} className='overlay'></div>
           <div className='modal__content'>
             <ul>

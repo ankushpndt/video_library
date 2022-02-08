@@ -6,7 +6,7 @@ export const Videos = () => {
 
   return (
     <div className='video__item'>
-      <ul>
+      <ul className='video__item__list'>
         {videoList?.map(({ title, videoId, date, views, image }, i) => {
           return (
             <div className='video__list' key={i}>
@@ -21,7 +21,7 @@ export const Videos = () => {
               >
                 {' '}
                 <div className='video__body'>
-                  <img src={image} width='370' height=' auto' alt='error' />
+                  <img src={image} className='video__body__image' alt='error' />
                   <div style={{ marginTop: '1rem' }}>{title}</div>
                   <p>
                     {views} • <span>{date}</span>

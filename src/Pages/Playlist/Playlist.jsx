@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useData } from '../../Context/DataContext';
 import '../../Videos.css';
-import { deletePlaylist, getPlaylist } from '../../utils/ApiCall';
+import { getPlaylist } from '../../utils/ApiCall';
 import { useAuth } from '../../Context/AuthContext';
-
+import './Playlist.css';
 import { PlaylistOverview } from './PlaylistOverview';
 
 export const Playlist = () => {
@@ -14,7 +14,7 @@ export const Playlist = () => {
   }, [dispatch, token]);
 
   return (
-    <main>
+    <main className='playlist__container'>
       <h1>Playlist</h1>
       <div className='video__item'>
         {playlist?.map((playlistItem, i) => (

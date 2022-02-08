@@ -29,7 +29,7 @@ export const App = () => {
   const { userLogout, login, token } = useAuth();
 
   const { dispatch } = useData();
-  console.log(login?.isUserLoggedIn);
+
   const [open, setOpen] = useState(false);
   useEffect(() => {
     getVideos(dispatch);

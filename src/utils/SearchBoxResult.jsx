@@ -14,9 +14,8 @@ export const SearchBoxResult = ({ video, setToggleDropbox }) => {
       className='searchBox__result'
     >
       <div className='sb'>
-        {/* <div className='avatar'>
-          <img className='avatar__img' src={video.image} alt='avatar' />
-        </div> */}
+        <img className='avatar__img' src={video.image} alt='avatar' />
+
         <div className='result__content'>
           <h5 className='title'>{video.title}</h5>
         </div>

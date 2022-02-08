@@ -1,20 +1,54 @@
+.playlist__container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.playlist__video__list {
+  display: flex;
+}
 .playlist__ov {
   display: flex;
   justify-content: space-between;
-  padding-top: 1rem;
+  padding: 1rem 1rem 0 1rem;
 }
 
 .playlist__transparent__btn {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  padding-right: 1rem;
+  padding-left: 1rem;
 }
-.remove__btn {
+.playlist__remove__btn {
   position: relative;
-  right: 1rem;
-  top: 0.3rem;
+  left: 21.5rem;
+  top: 2rem;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  color: white;
+}
+.playlist__video__body {
+  padding: 0;
+}
+.playlist__video__body img {
+  width: 370px;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .playlist__video__body {
+    padding: 1rem;
+  }
+  .playlist__video__body img {
+    width: 100%;
+    height: auto;
+  }
+  .playlist__remove__btn {
+    position: relative;
+    left: 20.8rem;
+    top: 3rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+  }
 }

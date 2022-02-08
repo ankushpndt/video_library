@@ -24,7 +24,7 @@ export const History = () => {
             return (
               <div className='container' key={i}>
                 <button
-                  className='remove__btn'
+                  className='liked__remove__btn'
                   onClick={() =>
                     deleteFromHistory({ dispatch, token, _id: video?._id })
                   }
@@ -41,13 +41,8 @@ export const History = () => {
                   key={i}
                 >
                   {' '}
-                  <div className='history__body'>
-                    <img
-                      src={video?.image}
-                      width='370'
-                      height=' auto'
-                      alt='error'
-                    />
+                  <div className='liked__video__body'>
+                    <img src={video?.image} alt='error' />
                     <div className='history__info'>
                       <div>{video?.title}</div>
                       <p>{video?.views}</p>

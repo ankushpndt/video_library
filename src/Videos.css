@@ -1,19 +1,11 @@
 @import url('https://metal-ui.netlify.app/components/components.css');
+h1 {
+  padding: 1rem;
+}
 .video__player {
   height: 100%;
+  padding: 0.5rem;
 }
-/* .video__responsive {
-  height: 100%;
-} */
-/* .youtube__player {
-  position: relative;
-  padding-top: 56.25%;
-}
-.y__player {
-  position: absolute;
-  top: 0;
-  left: 0;
-} */
 .y__player {
   width: 100%;
   height: 300px;
@@ -30,16 +22,21 @@
 .video__item {
   text-align: left;
 }
-.video__item ul {
+
+.video__item__list {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
 }
 .video__item p {
   color: gray;
 }
-
+.video__body {
+  padding: 1rem;
+}
+.video__body__image {
+  width: 100%;
+}
 .like__btn {
   display: flex;
   cursor: pointer;
@@ -61,6 +58,22 @@
   border: none;
   cursor: pointer;
 }
+.liked__video__body {
+  padding: 1rem;
+}
+.liked__video__body img {
+  width: 100%;
+  height: auto;
+}
+.liked__remove__btn {
+  position: relative;
+  left: 20.8rem;
+  top: 3rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
 @media screen and (min-width: 640px) {
   .info {
     display: flex;
@@ -72,5 +85,27 @@
   .y__player {
     width: 850px;
     height: 550px;
+  }
+  .video__list {
+    max-width: 350px;
+  }
+  .liked__video__body {
+    padding: 0;
+  }
+  .liked__video__body img {
+    width: 370px;
+    height: auto;
+  }
+  h1 {
+    padding: 0;
+  }
+  .liked__remove__btn {
+    position: relative;
+    left: 21.5rem;
+    top: 2rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
   }
 }

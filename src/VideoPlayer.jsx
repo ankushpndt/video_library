@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import './Videos.css';
 import { useData } from './Context/DataContext';
@@ -12,11 +12,12 @@ import {
   addToHistory,
   addToWatchLater,
   addToLikedVideos,
+  getLikedVideos,
 } from './utils/ApiCall';
 import { useAuth } from './Context/AuthContext';
 export const VideoPlayer = () => {
   const [sizeOfWindow, setSizeOfWindow] = useState(window.innerWidth);
-  const { videoList, dispatch } = useData();
+  const { videoList, dispatch, likedVideo } = useData();
   const { videoId } = useParams();
   const getVideoDetails = (videos, videoId) =>
     videos?.find((video) => video.videoId === videoId);
@@ -40,7 +41,9 @@ export const VideoPlayer = () => {
   const toggleModal = () => {
     setModal(!modal);
   };
-
+  useEffect(() => {
+    getLikedVideos(dispatch, token);
+  }, [dispatch, token]);
   return (
     <main>
       <div className='video__player'>
@@ -61,12 +64,16 @@ export const VideoPlayer = () => {
               {video?.views} • <span>{video?.date}</span>
             </p>
             <span className='like__btn'>
-              <ThumbUpAltIcon
-                onClick={() =>
-                  addToLikedVideos({ dispatch, token, _id: video?._id })
-                }
-              />
-
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <ThumbUpAltIcon
+                  onClick={() =>
+                    addToLikedVideos({ dispatch, token, _id: video?._id })
+                  }
+                />
+                <div className='like__length' style={{ paddingLeft: '0.4rem' }}>
+                  {likedVideo?.length > 0 ? likedVideo?.length : 0}
+                </div>
+              </span>
               <ThumbDownAltIcon />
               <WatchLaterIcon
                 onClick={() =>

@@ -22,7 +22,7 @@ export const WatchLater = () => {
             return (
               <div className='container' key={i}>
                 <button
-                  className='remove__btn'
+                  className='liked__remove__btn'
                   onClick={() =>
                     deleteFromWatchLater({ dispatch, token, _id: video?._id })
                   }
@@ -40,13 +40,8 @@ export const WatchLater = () => {
                   key={video?.id}
                 >
                   {' '}
-                  <div className='video__body'>
-                    <img
-                      src={video?.image}
-                      width='370'
-                      height=' auto'
-                      alt='error'
-                    />
+                  <div className='liked__video__body'>
+                    <img src={video?.image} alt='error' />
                     <div style={{ marginTop: '1rem' }}>{video?.title}</div>
                     <p>
                       {video?.views} • <span>{video?.date}</span>
