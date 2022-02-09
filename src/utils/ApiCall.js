@@ -41,18 +41,18 @@ export const addToLikedVideos = async ({ dispatch, token, _id }) => {
 };
 export const deleteFromLikedVideos = async ({ dispatch, token, _id }) => {
   try {
-    const response = await axios.deleteFrom(
+    const response = await axios.delete(
       `${API_URL}/likedvideo/${_id}`,
 
       { headers: { 'auth-token': token } }
     );
-
+    console.log(response);
     dispatch({
       type: 'DELETE_FROM_LIKEDVIDEOS',
-      payload: response.data.updatedLikedVideos,
+      payload: response.data.likedVideos,
     });
   } catch (err) {
-    console.log(err.response);
+    console.log(err);
   }
 };
 export const getWatchLater = async (dispatch, token) => {

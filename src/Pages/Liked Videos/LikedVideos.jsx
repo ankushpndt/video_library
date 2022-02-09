@@ -46,7 +46,9 @@ export default function LikedVideos() {
                   {' '}
                   <div className='liked__video__body'>
                     <img src={video?.image} alt='error' />
-                    <div style={{ marginTop: '1rem' }}>{video?.title}</div>
+                    <div style={{ marginTop: '1rem', width: '370px' }}>
+                      {video?.title}
+                    </div>
                     <p>
                       {video?.views} • <span>{video?.date}</span>
                     </p>

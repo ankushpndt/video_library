@@ -74,7 +74,7 @@ export const SignUp = () => {
               color: 'black',
             }}
             activeStyle={{ fontWeight: 'bold' }}
-            to='/'
+            to='/login'
           >
             Login instead
           </NavLink>

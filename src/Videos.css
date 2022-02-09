@@ -111,5 +111,6 @@ h1 {
   .video__item ul {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
   }
 }
