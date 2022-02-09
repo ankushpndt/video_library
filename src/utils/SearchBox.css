@@ -14,7 +14,7 @@
 .searchBox {
   position: absolute;
   top: 2.5rem;
-  right: -6.5rem;
+  right: -5rem;
   width: 350px;
   background: var(--secondary-color);
   border: 1px solid var(--tertiary-color);
@@ -29,7 +29,7 @@
   font-weight: 500;
 }
 
-/* .searchBox::after {
+.searchBox::after {
   content: '';
   position: absolute;
   top: -0.5rem;
@@ -40,7 +40,7 @@
   border-top: 1px solid var(--tertiary-color);
   border-left: 1px solid var(--tertiary-color);
   transform: rotate(45deg);
-} */
+}
 
 .searchBox .searchBox__heading {
   color: var(--primary-text-color);
@@ -140,4 +140,10 @@
   min-height: 100%;
   width: 100%;
   z-index: 1;
+}
+@media (max-width: 648px) {
+  .searchBox {
+    right: -2rem;
+    width: 250px;
+  }
 }

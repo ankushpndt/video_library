@@ -108,4 +108,8 @@ h1 {
     cursor: pointer;
     color: white;
   }
+  .video__item ul {
+    display: flex;
+    gap: 1rem;
+  }
 }

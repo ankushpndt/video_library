@@ -34,17 +34,11 @@ export const App = () => {
   useEffect(() => {
     getVideos(dispatch);
     getHistory(dispatch, token);
-  }, [dispatch]);
+  }, [dispatch, token]);
   return (
     <div className='App'>
       <div className='app__body'>
-        <header
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            paddingTop: '1rem',
-          }}
-        >
+        <header className='header'>
           <Searchbar />
         </header>
         <aside className='aside'>
@@ -128,6 +122,9 @@ export const App = () => {
             <Link to='/' className='logo'>
               <PlayCircleIcon />
             </Link>
+            <div>
+              <Searchbar />
+            </div>
             <button
               className='open__menu'
               onClick={() => setOpen((open) => !open)}
@@ -233,6 +230,7 @@ export const App = () => {
             </ul>
           </div>
         </div>
+
         <Routes>
           <Route
             path='/'

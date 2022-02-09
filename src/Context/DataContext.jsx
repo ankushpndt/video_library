@@ -22,7 +22,6 @@ export const DataProvider = ({ children }) => {
         videoList: state?.videoList,
       }}
     >
-      {console.log(state)}
       {children}
     </DataContext.Provider>
   );

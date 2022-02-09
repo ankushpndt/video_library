@@ -107,8 +107,6 @@ export const AuthProvider = ({ children }) => {
         userId,
       }}
     >
-      {console.log(user)}
-      {console.log(userId)}
       {children}
     </AuthContext.Provider>
   );
