@@ -9,6 +9,6 @@
 5. Delete video from liked video, watch later, history and playlist.
 6. Responsive
 
-## Tech Stack
+## Tech Stack:
 1. Frontend - Javascript, CSS and React JS.
 2. Backend - Express, Node JS and MongoDB.
