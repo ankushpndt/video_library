@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import './Videos.css';
@@ -15,6 +15,7 @@ import {
   getLikedVideos,
 } from './utils/ApiCall';
 import { useAuth } from './Context/AuthContext';
+
 export const VideoPlayer = () => {
   // const [sizeOfWindow, setSizeOfWindow] = useState(window.innerWidth);
   const { videoList, dispatch, likedVideo } = useData();
@@ -35,9 +36,9 @@ export const VideoPlayer = () => {
   //   setSizeOfWindow(window.innerWidth);
   // };
 
-  const { token } = useAuth();
+  const { token, login } = useAuth();
   const [modal, setModal] = useState(false);
-
+  const navigate = useNavigate();
   const toggleModal = () => {
     setModal(!modal);
   };
@@ -67,11 +68,17 @@ export const VideoPlayer = () => {
               <span style={{ display: 'flex', alignItems: 'center' }}>
                 <ThumbUpAltIcon
                   onClick={() =>
-                    addToLikedVideos({ dispatch, token, _id: video?._id })
+                    login
+                      ? addToLikedVideos({ dispatch, token, _id: video?._id })
+                      : navigate('/login')
                   }
                 />
                 <div className='like__length' style={{ paddingLeft: '0.4rem' }}>
-                  {likedVideo?.length > 0 ? likedVideo?.length : 0}
+                  {likedVideo?.find((el) => el?._id === video?._id)
+                    ? likedVideo?.length > 0
+                      ? likedVideo?.length
+                      : 0
+                    : ''}
                 </div>
               </span>
               <ThumbDownAltIcon />

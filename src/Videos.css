@@ -12,13 +12,11 @@ h1 {
 }
 .video__route {
   text-decoration: none;
-  color: black;
+
   display: flex;
   align-items: center;
 }
-.video__route:hover {
-  color: red;
-}
+
 .video__item {
   text-align: left;
 }

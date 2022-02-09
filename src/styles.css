@@ -81,7 +81,7 @@ main {
     font-family: sans-serif;
     display: grid;
     grid-template-columns: 200px 250px;
-    grid-gap: 1.5rem;
+    grid-gap: 0.5rem;
     grid-template-areas:
       'header header header header'
       'aside main main main'
@@ -91,7 +91,7 @@ main {
   .header {
     display: flex;
     justify-content: center;
-    padding-top: 2rem;
+    padding-top: 1rem;
   }
   .aside {
     display: flex;
