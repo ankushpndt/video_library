@@ -41,69 +41,100 @@ export const App = () => {
           <Searchbar />
         </header>
         <aside className='aside'>
-          <Link to='/' className='logo'>
-            <PlayCircleIcon />
-          </Link>
-          <NavLink end className='video__route' to='/'>
+          <NavLink
+            style={({ isActive }) => {
+              return { color: isActive ? 'red' : 'black' };
+            }}
+            className='video__route'
+            to='/'
+          >
             <HomeIcon />
             <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
               Home
             </span>
           </NavLink>
-          <NavLink className='video__route' to='/playlist'>
+          <NavLink
+            style={({ isActive }) => {
+              return { color: isActive ? 'red' : 'black' };
+            }}
+            className='video__route'
+            to='/playlist'
+          >
             <PlaylistAddIcon />
             <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
               Playlist
             </span>
           </NavLink>
-          <NavLink className='video__route' to='/history'>
+          <NavLink
+            style={({ isActive }) => {
+              return { color: isActive ? 'red' : 'black' };
+            }}
+            className='video__route'
+            to='/history'
+          >
             <HistoryIcon />
             <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
               History
             </span>
           </NavLink>
-          <NavLink className='video__route' to='/watchLater'>
+          <NavLink
+            style={({ isActive }) => {
+              return { color: isActive ? 'red' : 'black' };
+            }}
+            className='video__route'
+            to='/watchLater'
+          >
             <WatchLaterIcon />
             <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
               Watch Later
             </span>
           </NavLink>
-          <NavLink className='video__route' to='/likedVideos'>
+          <NavLink
+            style={({ isActive }) => {
+              return { color: isActive ? 'red' : 'black' };
+            }}
+            className='video__route'
+            to='/likedVideos'
+          >
             <ThumbUpIcon />{' '}
             <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
               Liked Videos
             </span>
           </NavLink>{' '}
-          <NavLink className='video__route' to='/user'>
-            <AccountCircleIcon />
-            <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-              User
-            </span>
-          </NavLink>
-          <NavLink className='video__route' to='/login'>
-            <AccountCircleIcon />
-            <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-              Login
-            </span>
-          </NavLink>
-          <NavLink
-            className='video__route'
-            activestyle={{
-              fontWeight: 'bold',
-            }}
-            to='/signup'
-          >
-            <AccountCircleIcon />
-            <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-              SignUp
-            </span>
-          </NavLink>
+          {!login && (
+            <NavLink
+              style={({ isActive }) => {
+                return { color: isActive ? 'red' : 'black' };
+              }}
+              className='video__route'
+              to='/login'
+            >
+              <AccountCircleIcon />
+              <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
+                Login
+              </span>
+            </NavLink>
+          )}
+          {!login && (
+            <NavLink
+              style={({ isActive }) => {
+                return { color: isActive ? 'red' : 'black' };
+              }}
+              className='video__route'
+              to='/signup'
+            >
+              <AccountCircleIcon />
+              <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
+                SignUp
+              </span>
+            </NavLink>
+          )}
           {login ? (
             <NavLink
-              className='video__route'
-              activestyle={{
-                fontWeight: 'bold',
+              style={({ isActive }) => {
+                return { color: isActive ? 'red' : 'black' };
               }}
+              className='video__route'
               to='/login'
               onClick={userLogout}
             >
@@ -138,7 +169,13 @@ export const App = () => {
             <ul className='menu'>
               <li>
                 {' '}
-                <NavLink className='menu__link' to='/'>
+                <NavLink
+                  style={({ isActive }) => {
+                    return { color: isActive ? 'red' : 'black' };
+                  }}
+                  className='menu__link'
+                  to='/'
+                >
                   <HomeIcon />
                   <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
                     Home
@@ -146,7 +183,13 @@ export const App = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className='menu__link' to='/playlist'>
+                <NavLink
+                  style={({ isActive }) => {
+                    return { color: isActive ? 'red' : 'black' };
+                  }}
+                  className='menu__link'
+                  to='/playlist'
+                >
                   <PlaylistAddIcon />
                   <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
                     Playlist
@@ -154,7 +197,13 @@ export const App = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className='menu__link' to='/history'>
+                <NavLink
+                  style={({ isActive }) => {
+                    return { color: isActive ? 'red' : 'black' };
+                  }}
+                  className='menu__link'
+                  to='/history'
+                >
                   <HistoryIcon />
                   <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
                     History
@@ -162,7 +211,13 @@ export const App = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className='menu__link' to='/watchLater'>
+                <NavLink
+                  style={({ isActive }) => {
+                    return { color: isActive ? 'red' : 'black' };
+                  }}
+                  className='menu__link'
+                  to='/watchLater'
+                >
                   <WatchLaterIcon />
                   <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
                     Watch Later
@@ -170,7 +225,13 @@ export const App = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className='menu__link' to='/likedVideos'>
+                <NavLink
+                  style={({ isActive }) => {
+                    return { color: isActive ? 'red' : 'black' };
+                  }}
+                  className='menu__link'
+                  to='/likedVideos'
+                >
                   <ThumbUpIcon />{' '}
                   <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
                     Liked Videos
@@ -178,34 +239,44 @@ export const App = () => {
                 </NavLink>{' '}
               </li>
 
-              <li>
-                <NavLink className='menu__link' to='/login'>
-                  <AccountCircleIcon />
-                  <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-                    Login
-                  </span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className='menu__link'
-                  activestyle={{
-                    fontWeight: 'bold',
-                  }}
-                  to='/signup'
-                >
-                  <AccountCircleIcon />
-                  <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-                    SignUp
-                  </span>
-                </NavLink>
-              </li>
+              {!login && (
+                <li>
+                  <NavLink
+                    style={({ isActive }) => {
+                      return { color: isActive ? 'red' : 'black' };
+                    }}
+                    className='menu__link'
+                    to='/login'
+                  >
+                    <AccountCircleIcon />
+                    <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
+                      Login
+                    </span>
+                  </NavLink>
+                </li>
+              )}
+              {!login && (
+                <li>
+                  <NavLink
+                    style={({ isActive }) => {
+                      return { color: isActive ? 'red' : 'black' };
+                    }}
+                    className='menu__link'
+                    to='/signup'
+                  >
+                    <AccountCircleIcon />
+                    <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
+                      SignUp
+                    </span>
+                  </NavLink>
+                </li>
+              )}
               <li>
                 {login ? (
                   <NavLink
                     className='menu__link'
-                    activestyle={{
-                      fontWeight: 'bold',
+                    style={({ isActive }) => {
+                      return { color: isActive ? 'red' : 'black' };
                     }}
                     to='/login'
                     onClick={userLogout}

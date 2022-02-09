@@ -91,7 +91,7 @@ main {
   .header {
     display: flex;
     justify-content: center;
-    padding-top: 1rem;
+    padding-top: 2rem;
   }
   .aside {
     display: flex;
