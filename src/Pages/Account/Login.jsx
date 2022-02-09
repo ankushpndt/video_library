@@ -3,15 +3,19 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { TextField } from '@mui/material';
 import './Account.css';
+import { validateForm } from '../../Components/ValidateForm';
 export const Login = () => {
-  const { loginWithCredentials } = useAuth();
+  const { loginWithCredentials, error, setError } = useAuth();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [errorMessage, setErrorMessage] = useState('');
   const submitHandler = (e) => {
     e.preventDefault();
-    loginWithCredentials(email, password);
+
+    validateForm({ email, password, setErrorMessage }) &&
+      loginWithCredentials(email, password);
+    setError('');
   };
 
   return (
@@ -26,7 +30,7 @@ export const Login = () => {
           margin: '4rem auto 2rem auto',
           padding: '4rem',
           border: '2px solid #f0f0f0',
-          width: '20rem',
+          width: '25rem',
         }}
       >
         <h2>Login</h2>
@@ -55,8 +59,9 @@ export const Login = () => {
           required
           value={password}
         />
-
-        {/* <div className='name__error'>{errorMessage !== '' && errorMessage}</div> */}
+        <br />
+        <div className='name__error'>{errorMessage !== '' && errorMessage}</div>
+        <div>{error?.message}</div>
         <br />
         {/*Login button*/}
         <input type='submit' value='LOGIN' id='login__btn__outlined' />
@@ -67,7 +72,6 @@ export const Login = () => {
               textDecoration: 'none',
               color: 'black',
             }}
-            activeStyle={{ fontWeight: 'bold' }}
             to='/signup'
           >
             Create an account

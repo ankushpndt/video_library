@@ -33,14 +33,15 @@ export const AuthProvider = ({ children }) => {
         'https://videoLibraryBackend.ankushpndt.repl.co/user/signup',
         { name: name, email: email, password: password }
       );
-      // console.log(response);
-      if (response.status === 201) {
+      console.log(response);
+      if (response.status === 200) {
         signUpUser(response.data);
       }
-      if (response.data) navigate('/');
+      if (response.data.success === true)
+        navigate(state?.from ? state.from : '/');
     } catch (error) {
-      setError(error.response.data?.errors);
-      // console.log(error);
+      setError(error.response.data);
+      console.log(error.response);
     }
   };
   const signUpUser = ({ token }) => {
@@ -65,9 +66,11 @@ export const AuthProvider = ({ children }) => {
 
       loginUser(response.data);
 
-      if (response.data) navigate(state?.from ? state.from : '/');
+      if (response.data.success === true)
+        navigate(state?.from ? state.from : '/');
     } catch (error) {
-      setError(error.response.data.errors);
+      console.log(error.response.data);
+      setError(error.response.data);
     }
   };
   const loginUser = ({ token, userName, userid }) => {
@@ -105,6 +108,7 @@ export const AuthProvider = ({ children }) => {
         userLogout,
         user,
         userId,
+        setError,
       }}
     >
       {children}

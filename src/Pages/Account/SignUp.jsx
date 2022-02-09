@@ -3,18 +3,21 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { TextField } from '@mui/material';
 import './Account.css';
+import { validateForm } from '../../Components/ValidateForm';
 export const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const { signUpWithCredentials } = useAuth();
-
-  async function submitHandler(e) {
+  const { signUpWithCredentials, error, setError } = useAuth();
+  const [errorMessage, setErrorMessage] = useState('');
+  const submitHandler = async (e) => {
     e.preventDefault();
 
-    signUpWithCredentials(name, email, password);
-  }
-
+    validateForm({ name, email, password, setErrorMessage }) &&
+      signUpWithCredentials(name, email, password);
+    setError('');
+  };
+  console.log(errorMessage);
   return (
     <div className='signup'>
       <form
@@ -63,7 +66,8 @@ export const SignUp = () => {
           value={password}
         />
         <br />
-        {/* <div className='name__error'>{errorMessage !== '' && errorMessage}</div> */}
+        <div className='name__error'>{errorMessage !== '' && errorMessage}</div>
+        <div>{error?.message}</div>
         <br />
         <input type='submit' value='SIGN UP' id='login__btn__outlined' />
         <br />
@@ -73,7 +77,6 @@ export const SignUp = () => {
               textDecoration: 'none',
               color: 'black',
             }}
-            activeStyle={{ fontWeight: 'bold' }}
             to='/login'
           >
             Login instead
