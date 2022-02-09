@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
       if (response.status === 201) {
         signUpUser(response.data);
       }
-      if (response.data.user) navigate('/');
+      if (response.data) navigate('/');
     } catch (error) {
       setError(error.response.data?.errors);
       // console.log(error);

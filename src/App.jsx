@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { VideoPlayer } from './VideoPlayer';
 import { Videos } from './Videos';
 import { Playlist } from './Pages/Playlist/Playlist';
-import { User } from './Pages/Account/User';
 import { NavLink, Route, Routes, Link } from 'react-router-dom';
 import { WatchLater } from './Pages/Watch Later/WatchLater';
 import LikedVideos from './Pages/Liked Videos/LikedVideos';
@@ -178,14 +177,7 @@ export const App = () => {
                   </span>
                 </NavLink>{' '}
               </li>
-              <li>
-                <NavLink className='menu__link' to='/user'>
-                  <AccountCircleIcon />
-                  <span style={{ fontSize: '1.2rem', paddingLeft: '0.5rem' }}>
-                    User
-                  </span>
-                </NavLink>
-              </li>
+
               <li>
                 <NavLink className='menu__link' to='/login'>
                   <AccountCircleIcon />
@@ -274,7 +266,7 @@ export const App = () => {
               </PrivateRoute>
             }
           />
-          <Route path='/user' element={<User />} />
+
           <Route
             path='/login'
             element={
