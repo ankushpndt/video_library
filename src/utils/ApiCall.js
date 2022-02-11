@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { toast } from 'react-toastify';
 const API_URL = 'https://videoLibraryBackend.ankushpndt.repl.co';
 export const getVideos = async (dispatch) => {
   try {
@@ -15,6 +15,7 @@ export const getLikedVideos = async (dispatch, token) => {
     const response = await axios.get(`${API_URL}/likedvideo`, {
       headers: { 'auth-token': token },
     });
+    console.log(response);
     dispatch({
       type: 'GET_LIKEDVIDEOS',
       payload: response.data.likedVideos,
@@ -30,13 +31,14 @@ export const addToLikedVideos = async ({ dispatch, token, _id }) => {
       {},
       { headers: { 'auth-token': token } }
     );
-
+    console.log(response);
     dispatch({
       type: 'ADD_TO_LIKEDVIDEOS',
       payload: response.data.updatedLikedVideos,
     });
   } catch (err) {
-    console.log(err);
+    toast.dark(err.response.data.message);
+    console.log(err.response.data);
   }
 };
 export const deleteFromLikedVideos = async ({ dispatch, token, _id }) => {
@@ -77,6 +79,7 @@ export const addToWatchLater = async ({ dispatch, token, _id }) => {
       type: 'ADD_TO_WATCHLATER',
       payload: response.data.updatedWatchLater,
     });
+    toast.dark('Added to Watchlater');
   } catch (err) {
     console.log(err.response);
   }
@@ -93,6 +96,7 @@ export const deleteFromWatchLater = async ({ dispatch, token, _id }) => {
       type: 'DELETE_FROM_WATCHLATER',
       payload: response.data.watchLater,
     });
+    toast.dark('Deleted from Watchlater');
   } catch (err) {
     console.log(err.response);
   }
@@ -122,13 +126,12 @@ export const createPlaylistName = async ({
       { headers: { 'auth-token': token } }
     );
     dispatch({ type: 'CREATE_PLAYLIST', payload: response.data.playlist });
+    toast.dark('Playlist created');
   } catch (err) {
     console.log(err.response);
   }
 };
 export const togglePlaylist = async ({ dispatch, token, playlistId, vId }) => {
-  console.log(vId);
-  console.log(playlistId);
   try {
     const response = await axios.post(
       `${API_URL}/playlist/toggle/${playlistId}`,
@@ -161,6 +164,7 @@ export const deletePlaylist = async ({ dispatch, token, playlistId }) => {
       type: 'DELETE_PLAYLIST',
       payload: response.data.deletedPlaylist,
     });
+    toast.dark('Deleted from Playlist');
   } catch (err) {
     console.log(err.response);
   }
@@ -186,6 +190,7 @@ export const renamePlaylist = async ({
       type: 'RENAME_PLAYLIST',
       payload: response.data.updatedPlaylistName,
     });
+    toast.dark('Renamed the playlist');
   } catch (err) {
     console.log(err.response);
   }

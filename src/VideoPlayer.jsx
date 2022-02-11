@@ -8,6 +8,7 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import WatchLaterIcon from '@mui/icons-material/WatchLater';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import {
   addToHistory,
   addToWatchLater,
@@ -39,12 +40,14 @@ export const VideoPlayer = () => {
   const { token, login } = useAuth();
   const [modal, setModal] = useState(false);
   const navigate = useNavigate();
+
   const toggleModal = () => {
     setModal(!modal);
   };
   useEffect(() => {
     getLikedVideos(dispatch, token);
   }, [dispatch, token]);
+  console.log(likedVideo);
   return (
     <main>
       <div className='video__player'>
@@ -66,19 +69,26 @@ export const VideoPlayer = () => {
             </p>
             <span className='like__btn'>
               <span style={{ display: 'flex', alignItems: 'center' }}>
-                <ThumbUpAltIcon
-                  onClick={() =>
-                    login
-                      ? addToLikedVideos({ dispatch, token, _id: video?._id })
-                      : navigate('/login')
-                  }
-                />
+                {likedVideo?.find((el) => el?._id === video?._id) ? (
+                  <ThumbUpAltIcon
+                    onClick={() => {
+                      login
+                        ? addToLikedVideos({ dispatch, token, _id: video?._id })
+                        : navigate('/login');
+                    }}
+                  />
+                ) : (
+                  <ThumbUpAltOutlinedIcon
+                    onClick={() => {
+                      login
+                        ? addToLikedVideos({ dispatch, token, _id: video?._id })
+                        : navigate('/login');
+                    }}
+                    s
+                  />
+                )}
                 <div className='like__length' style={{ paddingLeft: '0.4rem' }}>
-                  {likedVideo?.find((el) => el?._id === video?._id)
-                    ? likedVideo?.length > 0
-                      ? likedVideo?.length
-                      : 0
-                    : ''}
+                  {likedVideo?.length > 0 ? likedVideo?.length : 0}
                 </div>
               </span>
               <ThumbDownAltIcon />

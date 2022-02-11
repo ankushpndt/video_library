@@ -24,6 +24,9 @@ import { useAuth } from './Context/AuthContext';
 import { useData } from './Context/DataContext';
 import { getHistory, getVideos } from './utils/ApiCall';
 import { Searchbar } from './Components/Searchbar';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const App = () => {
   const { userLogout, login, token } = useAuth();
 
@@ -356,6 +359,11 @@ export const App = () => {
           />
         </Routes>
       </div>
+      <ToastContainer
+        position='bottom-center'
+        autoClose={3000}
+        hideProgressBar={true}
+      />
     </div>
   );
 };

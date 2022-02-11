@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createContext, useContext, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -51,8 +51,11 @@ export const AuthProvider = ({ children }) => {
       'login',
       JSON.stringify({ isUserLoggedIn: true, token })
     );
+
+    toast.dark('Signed Up successfully!');
   };
-  // login;
+
+  // login
   const loginWithCredentials = async (email, password) => {
     try {
       const response = await axios.post(
@@ -87,6 +90,7 @@ export const AuthProvider = ({ children }) => {
         userId: userid,
       })
     );
+    toast.dark('Signed in successfully!');
   };
   const userLogout = async () => {
     localStorage.removeItem('login');
@@ -94,6 +98,7 @@ export const AuthProvider = ({ children }) => {
     setToken('');
     setUser('');
     setUserId('');
+    toast.dark('Logged out successfully');
     navigate('/login');
   };
 

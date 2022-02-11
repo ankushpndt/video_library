@@ -50,7 +50,7 @@ export const DataReducer = (state, { type, payload }) => {
       const currentPlaylist = state.playlist.find(
         (el) => el._id === payload.data._id
       );
-      // console.log(currentPlaylist);
+
       const videoIsPresentInPlaylist = currentPlaylist?.videos.find(
         (el) => el === payload.videoId
       );
