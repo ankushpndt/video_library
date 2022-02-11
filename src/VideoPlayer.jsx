@@ -14,6 +14,7 @@ import {
   addToWatchLater,
   addToLikedVideos,
   getLikedVideos,
+  getVideos,
 } from './utils/ApiCall';
 import { useAuth } from './Context/AuthContext';
 
@@ -36,8 +37,11 @@ export const VideoPlayer = () => {
   // window.onresize = () => {
   //   setSizeOfWindow(window.innerWidth);
   // };
+  const extractedVideo = videoList?.find((el) => el.videoId === videoId);
 
-  const { token, login } = useAuth();
+  const likedByUser = extractedVideo?.likedByUser;
+  console.log(likedByUser);
+  const { token, login, userId } = useAuth();
   const [modal, setModal] = useState(false);
   const navigate = useNavigate();
 
@@ -47,7 +51,7 @@ export const VideoPlayer = () => {
   useEffect(() => {
     getLikedVideos(dispatch, token);
   }, [dispatch, token]);
-  console.log(likedVideo);
+
   return (
     <main>
       <div className='video__player'>
@@ -73,26 +77,32 @@ export const VideoPlayer = () => {
             </p>
             <span className='like__btn'>
               <span style={{ display: 'flex', alignItems: 'center' }}>
-                {likedVideo?.find((el) => el?._id === video?._id) ? (
+                {likedByUser?.find((el) => el === userId) ? (
                   <ThumbUpAltIcon
                     onClick={() => {
-                      login
-                        ? addToLikedVideos({ dispatch, token, _id: video?._id })
-                        : navigate('/login');
+                      if (login) {
+                        addToLikedVideos({ dispatch, _id: video?._id, token });
+                        getVideos(dispatch);
+                      } else {
+                        navigate('/login');
+                      }
                     }}
                   />
                 ) : (
                   <ThumbUpAltOutlinedIcon
                     onClick={() => {
-                      login
-                        ? addToLikedVideos({ dispatch, token, _id: video?._id })
-                        : navigate('/login');
+                      if (login) {
+                        addToLikedVideos({ dispatch, _id: video?._id, token });
+                        getVideos(dispatch);
+                      } else {
+                        navigate('/login');
+                      }
                     }}
                     s
                   />
                 )}
                 <div className='like__length' style={{ paddingLeft: '0.4rem' }}>
-                  {likedVideo?.length > 0 ? likedVideo?.length : 0}
+                  {likedByUser?.length > 0 ? likedByUser?.length : 0}
                 </div>
               </span>
               <ThumbDownAltIcon />

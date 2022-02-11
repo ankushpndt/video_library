@@ -5,6 +5,7 @@ export const getVideos = async (dispatch) => {
   try {
     const response = await axios.get(`${API_URL}/video`);
     dispatch({ type: 'GET_VIDEOS', payload: response.data.videoList });
+    console.log(response.data.videoList);
   } catch (err) {
     console.log(err);
   }
@@ -15,7 +16,7 @@ export const getLikedVideos = async (dispatch, token) => {
     const response = await axios.get(`${API_URL}/likedvideo`, {
       headers: { 'auth-token': token },
     });
-    console.log(response);
+
     dispatch({
       type: 'GET_LIKEDVIDEOS',
       payload: response.data.likedVideos,

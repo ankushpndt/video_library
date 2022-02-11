@@ -13,6 +13,7 @@ export default function LikedVideos() {
   const extractVideoFromLikedVideos = videoList?.filter((video) => {
     return likedVideo?.find((el) => el._id === video._id);
   });
+
   useEffect(() => {
     getLikedVideos(dispatch, token);
   }, [dispatch, token]);
