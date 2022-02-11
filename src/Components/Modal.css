@@ -40,4 +40,5 @@ body.active-modal {
   top: 10px;
   right: 10px;
   padding: 2.5px 5px;
+  cursor: pointer;
 }

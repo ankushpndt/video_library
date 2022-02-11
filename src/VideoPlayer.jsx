@@ -42,7 +42,7 @@ export const VideoPlayer = () => {
   const navigate = useNavigate();
 
   const toggleModal = () => {
-    setModal(!modal);
+    login ? setModal(!modal) : navigate('/login');
   };
   useEffect(() => {
     getLikedVideos(dispatch, token);
@@ -57,7 +57,11 @@ export const VideoPlayer = () => {
               className='y__player'
               videoId={`${videoId}`}
               opts={opts}
-              onPlay={() => addToHistory({ dispatch, _id: video?._id, token })}
+              onPlay={() =>
+                login
+                  ? addToHistory({ dispatch, _id: video?._id, token })
+                  : navigate('/login')
+              }
             />
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import { useAuth } from '../Context/AuthContext';
 import { useData } from '../Context/DataContext';
 
@@ -8,7 +9,7 @@ import {
   getPlaylist,
 } from '../utils/ApiCall';
 import './Modal.css';
-
+import CloseIcon from '@mui/icons-material/Close';
 export const Modal = ({ modal, toggleModal, videoId }) => {
   if (modal) {
     document.body.classList.add('active__modal');
@@ -69,6 +70,7 @@ export const Modal = ({ modal, toggleModal, videoId }) => {
                         vId,
                       })
                     }
+                    value=''
                     style={{ cursor: 'pointer' }}
                   />{' '}
                   <label htmlFor='cb' style={{ fontSize: '1.2rem' }}>
@@ -89,20 +91,9 @@ export const Modal = ({ modal, toggleModal, videoId }) => {
                 onChange={(e) => setPlaylistInput(e.target.value)}
                 style={{ padding: '0.2rem' }}
               />
-              <button
-                style={{
-                  padding: '0.2rem',
-                  backgroundColor: 'transparent',
-                  border: '1px solid black',
-                  cursor: 'pointer',
-                }}
-              >
-                Create
-              </button>
+              <button id='login__btn__outlined'>Create</button>
             </form>
-            <button className='close__modal' onClick={toggleModal}>
-              X
-            </button>
+            <CloseIcon className='close__modal' onClick={toggleModal} />
           </div>
         </div>
       )}

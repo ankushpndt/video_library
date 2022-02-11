@@ -57,6 +57,7 @@ export const DataReducer = (state, { type, payload }) => {
       return !videoIsPresentInPlaylist
         ? addVideoToPlaylist(state, payload.videoId, payload.data._id)
         : deleteVideoFromPlaylist(state, payload.videoId, payload.data._id);
+
     case 'DELETE_PLAYLIST':
       return {
         ...state,

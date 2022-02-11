@@ -142,7 +142,7 @@ export const togglePlaylist = async ({ dispatch, token, playlistId, vId }) => {
         headers: { 'auth-token': token },
       }
     );
-
+    toast.dark(response?.data?.message);
     dispatch({
       type: 'TOGGLE_PLAYLIST',
       payload: { data: response.data.updatedPlaylist, videoId: vId },
