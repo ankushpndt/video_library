@@ -21,7 +21,9 @@ export const Modal = ({ modal, toggleModal, videoId }) => {
   const { token, userId } = useAuth();
 
   useEffect(() => {
-    getPlaylist({ token, dispatch, userId });
+    if (token) {
+      getPlaylist({ token, dispatch, userId });
+    }
   }, [token, dispatch, userId]);
 
   const getVideoDetails = videoList?.find(

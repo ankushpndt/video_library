@@ -87,8 +87,19 @@ h1 {
   .video__list {
     max-width: 350px;
   }
-  .liked__video__body {
+  /* .liked__video__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-wrap: wrap;
     padding: 0;
+  } */
+  .empty__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15rem;
+    color: gray;
   }
   .liked__video__body img {
     width: 370px;

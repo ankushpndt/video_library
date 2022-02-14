@@ -18,39 +18,47 @@ export const WatchLater = () => {
       <h1>Watch Later</h1>
       <div className='video__item'>
         <ul>
-          {extractVideoFromWatchLater?.map((video, i) => {
-            return (
-              <div className='container' key={i}>
-                <button
-                  className='liked__remove__btn'
-                  onClick={() =>
-                    deleteFromWatchLater({ dispatch, token, _id: video?._id })
-                  }
-                >
-                  <DeleteIcon />
-                </button>
-                <Link
-                  style={{
-                    textDecoration: 'none',
-                    color: 'black',
-                    display: 'grid',
-                    marginBottom: '1rem',
-                  }}
-                  to={`/video/${video?.videoId}`}
-                  key={video?.id}
-                >
-                  {' '}
-                  <div className='liked__video__body'>
-                    <img src={video?.image} alt='error' />
-                    <div style={{ marginTop: '1rem' }}>{video?.title}</div>
-                    <p>
-                      {video?.views} • <span>{video?.date}</span>
-                    </p>
-                  </div>
-                </Link>
-              </div>
-            );
-          })}
+          {extractVideoFromWatchLater?.length > 0 ? (
+            extractVideoFromWatchLater?.map((video, i) => {
+              return (
+                <div className='container' key={i}>
+                  <button
+                    className='liked__remove__btn'
+                    onClick={() =>
+                      deleteFromWatchLater({
+                        dispatch,
+                        token,
+                        _id: video?._id,
+                      })
+                    }
+                  >
+                    <DeleteIcon />
+                  </button>
+                  <Link
+                    style={{
+                      textDecoration: 'none',
+                      color: 'black',
+                      display: 'grid',
+                      marginBottom: '1rem',
+                    }}
+                    to={`/video/${video?.videoId}`}
+                    key={video?.id}
+                  >
+                    {' '}
+                    <div className='liked__video__body'>
+                      <img src={video?.image} alt='error' />
+                      <div style={{ marginTop: '1rem' }}>{video?.title}</div>
+                      <p>
+                        {video?.views} • <span>{video?.date}</span>
+                      </p>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })
+          ) : (
+            <div className='empty__text'>There is no video here.</div>
+          )}
         </ul>
       </div>
     </main>

@@ -35,7 +35,7 @@ export const App = () => {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     getVideos(dispatch);
-    getHistory(dispatch, token);
+    token && getHistory(dispatch, token);
   }, [dispatch, token]);
   return (
     <div className='App'>

@@ -15,49 +15,59 @@ export default function LikedVideos() {
   });
 
   useEffect(() => {
-    getLikedVideos(dispatch, token);
+    if (token) {
+      getLikedVideos(dispatch, token);
+    }
   }, [dispatch, token]);
   return (
     <main>
       <h1>Liked Videos</h1>
       <div className='video__item'>
         <ul>
-          {extractVideoFromLikedVideos.map((video, i) => {
-            return (
-              <div className='container' key={i}>
-                <button
-                  className='liked__remove__btn'
-                  onClick={() =>
-                    deleteFromLikedVideos({ dispatch, token, _id: video?._id })
-                  }
-                >
-                  <DeleteIcon />
-                </button>
+          {extractVideoFromLikedVideos.length !== 0 ? (
+            extractVideoFromLikedVideos.map((video, i) => {
+              return (
+                <div className='container' key={i}>
+                  <button
+                    className='liked__remove__btn'
+                    onClick={() =>
+                      deleteFromLikedVideos({
+                        dispatch,
+                        token,
+                        _id: video?._id,
+                      })
+                    }
+                  >
+                    <DeleteIcon />
+                  </button>
 
-                <Link
-                  style={{
-                    textDecoration: 'none',
-                    color: 'black',
-                    display: 'grid',
-                    marginBottom: '1rem',
-                  }}
-                  to={`/video/${video?.videoId}`}
-                  key={video.id}
-                >
-                  {' '}
-                  <div className='liked__video__body'>
-                    <img src={video?.image} alt='error' />
-                    <div style={{ marginTop: '1rem', width: '370px' }}>
-                      {video?.title}
+                  <Link
+                    style={{
+                      textDecoration: 'none',
+                      color: 'black',
+                      display: 'grid',
+                      marginBottom: '1rem',
+                    }}
+                    to={`/video/${video?.videoId}`}
+                    key={video.id}
+                  >
+                    {' '}
+                    <div className='liked__video__body'>
+                      <img src={video?.image} alt='error' />
+                      <div style={{ marginTop: '1rem', width: '370px' }}>
+                        {video?.title}
+                      </div>
+                      <p>
+                        {video?.views} • <span>{video?.date}</span>
+                      </p>
                     </div>
-                    <p>
-                      {video?.views} • <span>{video?.date}</span>
-                    </p>
-                  </div>
-                </Link>
-              </div>
-            );
-          })}
+                  </Link>
+                </div>
+              );
+            })
+          ) : (
+            <div className='empty__text'>There is no video here.</div>
+          )}
         </ul>
       </div>
     </main>

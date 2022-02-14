@@ -14,17 +14,25 @@ import {
   addToWatchLater,
   addToLikedVideos,
   getLikedVideos,
-  getVideos,
+  addToLikedByUser,
 } from './utils/ApiCall';
 import { useAuth } from './Context/AuthContext';
 
 export const VideoPlayer = () => {
   // const [sizeOfWindow, setSizeOfWindow] = useState(window.innerWidth);
-  const { videoList, dispatch, likedVideo } = useData();
+  const { videoList, dispatch } = useData();
   const { videoId } = useParams();
   const getVideoDetails = (videos, videoId) =>
     videos?.find((video) => video.videoId === videoId);
   const video = getVideoDetails(videoList, videoId);
+
+  const { token, login, userId } = useAuth();
+  const [modal, setModal] = useState(false);
+  const navigate = useNavigate();
+
+  const toggleModal = () => {
+    login ? setModal(!modal) : navigate('/login');
+  };
   const opts = {
     // height: sizeOfWindow > 900 ? '550' : '300',
     // width: '853',
@@ -37,19 +45,11 @@ export const VideoPlayer = () => {
   // window.onresize = () => {
   //   setSizeOfWindow(window.innerWidth);
   // };
-  const extractedVideo = videoList?.find((el) => el.videoId === videoId);
 
-  const likedByUser = extractedVideo?.likedByUser;
-  console.log(likedByUser);
-  const { token, login, userId } = useAuth();
-  const [modal, setModal] = useState(false);
-  const navigate = useNavigate();
-
-  const toggleModal = () => {
-    login ? setModal(!modal) : navigate('/login');
-  };
   useEffect(() => {
-    getLikedVideos(dispatch, token);
+    if (token) {
+      getLikedVideos(dispatch, token);
+    }
   }, [dispatch, token]);
 
   return (
@@ -61,11 +61,11 @@ export const VideoPlayer = () => {
               className='y__player'
               videoId={`${videoId}`}
               opts={opts}
-              onPlay={() =>
-                login
-                  ? addToHistory({ dispatch, _id: video?._id, token })
-                  : navigate('/login')
-              }
+              onPlay={() => {
+                if (login) {
+                  addToHistory({ dispatch, _id: video?._id, token });
+                }
+              }}
             />
           </div>
         </div>
@@ -77,12 +77,21 @@ export const VideoPlayer = () => {
             </p>
             <span className='like__btn'>
               <span style={{ display: 'flex', alignItems: 'center' }}>
-                {likedByUser?.find((el) => el === userId) ? (
+                {video?.likedByUser?.includes(userId) ? (
                   <ThumbUpAltIcon
                     onClick={() => {
                       if (login) {
-                        addToLikedVideos({ dispatch, _id: video?._id, token });
-                        getVideos(dispatch);
+                        addToLikedVideos({
+                          dispatch,
+                          _id: video?._id,
+                          token,
+                        });
+                        addToLikedByUser({
+                          dispatch,
+                          _id: video?._id,
+                          token,
+                          userId,
+                        });
                       } else {
                         navigate('/login');
                       }
@@ -93,16 +102,23 @@ export const VideoPlayer = () => {
                     onClick={() => {
                       if (login) {
                         addToLikedVideos({ dispatch, _id: video?._id, token });
-                        getVideos(dispatch);
+
+                        addToLikedByUser({
+                          dispatch,
+                          _id: video?._id,
+                          token,
+                          userId,
+                        });
                       } else {
                         navigate('/login');
                       }
                     }}
-                    s
                   />
                 )}
                 <div className='like__length' style={{ paddingLeft: '0.4rem' }}>
-                  {likedByUser?.length > 0 ? likedByUser?.length : 0}
+                  {video?.likedByUser?.length > 0
+                    ? video?.likedByUser?.length
+                    : 0}
                 </div>
               </span>
               <ThumbDownAltIcon />
@@ -112,7 +128,7 @@ export const VideoPlayer = () => {
                 }
               />
 
-              <button className=' playlist__btn' onClick={toggleModal}>
+              <button className='playlist__btn' onClick={toggleModal}>
                 <PlaylistAddIcon />
               </button>
             </span>

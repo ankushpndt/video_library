@@ -5,7 +5,6 @@ export const getVideos = async (dispatch) => {
   try {
     const response = await axios.get(`${API_URL}/video`);
     dispatch({ type: 'GET_VIDEOS', payload: response.data.videoList });
-    console.log(response.data.videoList);
   } catch (err) {
     console.log(err);
   }
@@ -32,10 +31,31 @@ export const addToLikedVideos = async ({ dispatch, token, _id }) => {
       {},
       { headers: { 'auth-token': token } }
     );
-    console.log(response);
+
     dispatch({
       type: 'ADD_TO_LIKEDVIDEOS',
       payload: response.data.updatedLikedVideos,
+    });
+  } catch (err) {
+    toast.dark(err.response.data.message);
+    console.log(err.response.data);
+  }
+};
+export const addToLikedByUser = async ({ dispatch, token, _id, userId }) => {
+  try {
+    const response = await axios.post(
+      `${API_URL}/video/likedbyuser/${_id}`,
+      {},
+      { headers: { 'auth-token': token } }
+    );
+
+    dispatch({
+      type: 'ADD_TO_LIKED_BY_USER',
+      payload: {
+        data: response.data.updatedLikedByUser,
+        userId,
+        videoId: _id,
+      },
     });
   } catch (err) {
     toast.dark(err.response.data.message);
@@ -49,11 +69,12 @@ export const deleteFromLikedVideos = async ({ dispatch, token, _id }) => {
 
       { headers: { 'auth-token': token } }
     );
-    console.log(response);
+
     dispatch({
       type: 'DELETE_FROM_LIKEDVIDEOS',
       payload: response.data.likedVideos,
     });
+    toast.dark('Deleted from liked videos');
   } catch (err) {
     console.log(err);
   }
@@ -80,7 +101,7 @@ export const addToWatchLater = async ({ dispatch, token, _id }) => {
       type: 'ADD_TO_WATCHLATER',
       payload: response.data.updatedWatchLater,
     });
-    toast.dark('Added to Watchlater');
+    toast.dark('Added to watch later');
   } catch (err) {
     console.log(err.response);
   }
@@ -97,7 +118,7 @@ export const deleteFromWatchLater = async ({ dispatch, token, _id }) => {
       type: 'DELETE_FROM_WATCHLATER',
       payload: response.data.watchLater,
     });
-    toast.dark('Deleted from Watchlater');
+    toast.dark('Deleted from watch later');
   } catch (err) {
     console.log(err.response);
   }
@@ -234,6 +255,7 @@ export const deleteFromHistory = async ({ dispatch, _id, token }) => {
       type: 'DELETE_FROM_HISTORY',
       payload: response.data.history,
     });
+    toast.dark('Deleted from history');
   } catch (err) {
     console.log(err.response);
   }

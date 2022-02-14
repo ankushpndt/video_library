@@ -20,6 +20,34 @@ export const deleteVideoFromPlaylist = (state, videoId, playlistId) => ({
       : playlistItem;
   }),
 });
+export const addUserToVideo = (state, videoId, userId) => {
+  return {
+    ...state,
+    videoList: state.videoList.map((videoItem) => {
+      return videoItem._id === videoId
+        ? {
+            ...videoItem,
+            likedByUser: [...videoItem.likedByUser, ...userId],
+          }
+        : videoItem;
+    }),
+  };
+};
+export const removeUserFromVideo = (state, videoId, userId) => {
+  return {
+    ...state,
+    videoList: state.videoList.map((videoItem) => {
+      return videoItem._id === videoId
+        ? {
+            ...videoItem,
+            likedByUser: videoItem.likedByUser.filter((el) => {
+              return userId.find((user_Id) => el !== user_Id);
+            }),
+          }
+        : videoItem;
+    }),
+  };
+};
 export const DataReducer = (state, { type, payload }) => {
   switch (type) {
     case 'GET_VIDEOS':
@@ -40,6 +68,18 @@ export const DataReducer = (state, { type, payload }) => {
       return { ...state, likedVideo: payload };
     case 'ADD_TO_LIKEDVIDEOS':
       return { ...state, likedVideo: payload };
+    case 'ADD_TO_LIKED_BY_USER':
+      const currentVideo = state.videoList.find(
+        (el) => el._id === payload.videoId
+      );
+      console.log(payload.data);
+      const isUserInLikedByUser = currentVideo?.likedByUser.includes(
+        payload?.userId
+      );
+
+      return !isUserInLikedByUser
+        ? addUserToVideo(state, payload.videoId, payload.data)
+        : removeUserFromVideo(state, payload.videoId, payload.data);
     case 'DELETE_FROM_LIKEDVIDEOS':
       return { ...state, likedVideo: payload };
     case 'GET_PLAYLIST':
@@ -54,6 +94,7 @@ export const DataReducer = (state, { type, payload }) => {
       const videoIsPresentInPlaylist = currentPlaylist?.videos.find(
         (el) => el === payload.videoId
       );
+
       return !videoIsPresentInPlaylist
         ? addVideoToPlaylist(state, payload.videoId, payload.data._id)
         : deleteVideoFromPlaylist(state, payload.videoId, payload.data._id);
