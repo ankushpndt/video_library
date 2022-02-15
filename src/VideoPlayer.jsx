@@ -19,7 +19,6 @@ import {
 import { useAuth } from './Context/AuthContext';
 
 export const VideoPlayer = ({ setOpen }) => {
-  // const [sizeOfWindow, setSizeOfWindow] = useState(window.innerWidth);
   const { videoList, dispatch } = useData();
   const { videoId } = useParams();
   const getVideoDetails = (videos, videoId) =>
@@ -35,17 +34,10 @@ export const VideoPlayer = ({ setOpen }) => {
     login ? setModal(!modal) : navigate('/login');
   };
   const opts = {
-    // height: sizeOfWindow > 900 ? '550' : '300',
-    // width: '853',
-    // width: '70%',
-    // height: '100%',
     playerVars: {
       autoplay: 1,
     },
   };
-  // window.onresize = () => {
-  //   setSizeOfWindow(window.innerWidth);
-  // };
 
   useEffect(() => {
     if (token) {

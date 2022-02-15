@@ -42,3 +42,10 @@ body.active-modal {
   padding: 2.5px 5px;
   cursor: pointer;
 }
+.modal__empty__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  color: gray;
+}

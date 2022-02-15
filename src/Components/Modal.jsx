@@ -53,33 +53,39 @@ export const Modal = ({ modal, toggleModal, videoId }) => {
           <div onClick={toggleModal} className='overlay'></div>
           <div className='modal__content'>
             <ul>
-              {playlist?.map((el, i) => (
-                <li
-                  key={i}
-                  style={{
-                    listStyle: 'none',
-                  }}
-                >
-                  <input
-                    type='checkbox'
-                    id='cb'
-                    checked={checkFunc({ playlistId: el?._id })}
-                    onChange={() =>
-                      togglePlaylist({
-                        dispatch,
-                        token,
-                        playlistId: el?._id,
-                        vId,
-                      })
-                    }
-                    value=''
-                    style={{ cursor: 'pointer' }}
-                  />{' '}
-                  <label htmlFor='cb' style={{ fontSize: '1.2rem' }}>
-                    {el?.name}
-                  </label>
-                </li>
-              ))}
+              {playlist?.length > 0 ? (
+                playlist?.map((el, i) => (
+                  <li
+                    key={i}
+                    style={{
+                      listStyle: 'none',
+                    }}
+                  >
+                    <input
+                      type='checkbox'
+                      id='cb'
+                      checked={checkFunc({ playlistId: el?._id })}
+                      onChange={() =>
+                        togglePlaylist({
+                          dispatch,
+                          token,
+                          playlistId: el?._id,
+                          vId,
+                        })
+                      }
+                      value=''
+                      style={{ cursor: 'pointer' }}
+                    />{' '}
+                    <label htmlFor='cb' style={{ fontSize: '1.2rem' }}>
+                      {el?.name}
+                    </label>
+                  </li>
+                ))
+              ) : (
+                <div className='modal__empty__text'>
+                  There is no playlist here.
+                </div>
+              )}
             </ul>
 
             <form
