@@ -72,7 +72,6 @@ export const DataReducer = (state, { type, payload }) => {
       const currentVideo = state.videoList.find(
         (el) => el._id === payload.videoId
       );
-      console.log(payload.data);
       const isUserInLikedByUser = currentVideo?.likedByUser.includes(
         payload?.userId
       );
@@ -80,6 +79,7 @@ export const DataReducer = (state, { type, payload }) => {
       return !isUserInLikedByUser
         ? addUserToVideo(state, payload.videoId, payload.data)
         : removeUserFromVideo(state, payload.videoId, payload.data);
+
     case 'DELETE_FROM_LIKEDVIDEOS':
       return { ...state, likedVideo: payload };
     case 'GET_PLAYLIST':
@@ -104,6 +104,7 @@ export const DataReducer = (state, { type, payload }) => {
         ...state,
         playlist: state.playlist?.filter((el) => el?._id !== payload?._id),
       };
+
     case 'RENAME_PLAYLIST':
       return {
         ...state,

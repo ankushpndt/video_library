@@ -2,9 +2,9 @@
   max-width: 100%;
   overflow-x: hidden;
 }
-.playlist__video__list {
+/* .playlist__video__list {
   display: flex;
-}
+} */
 .playlist__ov {
   display: flex;
   justify-content: space-between;
@@ -29,6 +29,10 @@
   cursor: pointer;
   color: white;
 }
+.playlist__video__card {
+  display: flex;
+  gap: 1rem;
+}
 .playlist__video__body {
   padding: 0;
 }
@@ -38,8 +42,13 @@
 }
 
 @media (max-width: 640px) {
+  .playlist__video__card {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
   .playlist__video__body {
-    padding: 1rem;
+    padding: 0 1rem;
   }
   .playlist__video__body img {
     width: 100%;
@@ -48,7 +57,7 @@
   .playlist__remove__btn {
     position: relative;
     left: 20.8rem;
-    top: 3rem;
+    top: 2rem;
     background-color: transparent;
     border: none;
     cursor: pointer;

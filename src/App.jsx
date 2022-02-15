@@ -6,7 +6,7 @@ import { Videos } from './Videos';
 import { Playlist } from './Pages/Playlist/Playlist';
 import { NavLink, Route, Routes, Link } from 'react-router-dom';
 import { WatchLater } from './Pages/Watch Later/WatchLater';
-import LikedVideos from './Pages/Liked Videos/LikedVideos';
+import { LikedVideos } from './Pages/Liked Videos/LikedVideos';
 import { History } from './Pages/History/History';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import HomeIcon from '@mui/icons-material/Home';
@@ -315,7 +315,10 @@ export const App = () => {
               </PrivateRoute>
             }
           />
-          <Route path='/video/:videoId' element={<VideoPlayer />} />
+          <Route
+            path='/video/:videoId'
+            element={<VideoPlayer setOpen={setOpen} />}
+          />
           <Route
             path='/history'
             element={

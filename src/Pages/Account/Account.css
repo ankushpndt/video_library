@@ -9,3 +9,10 @@
   color: white;
   background-color: black;
 }
+.login {
+  height: 90vh;
+}
+
+.signup {
+  height: 88vh;
+}

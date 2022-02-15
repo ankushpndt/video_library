@@ -91,7 +91,7 @@ export const Modal = ({ modal, toggleModal, videoId }) => {
                 value={playlistInput}
                 placeholder='Enter playlist name'
                 onChange={(e) => setPlaylistInput(e.target.value)}
-                style={{ padding: '0.2rem' }}
+                style={{ padding: '0.2rem', border: '2px solid black' }}
               />
               <button id='login__btn__outlined'>Create</button>
             </form>

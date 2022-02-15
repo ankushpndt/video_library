@@ -3,13 +3,17 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../Videos.css';
 import { useData } from '../../Context/DataContext';
-import { getLikedVideos, deleteFromLikedVideos } from '../../utils/ApiCall';
+import {
+  getLikedVideos,
+  deleteFromLikedVideos,
+  addToLikedByUser,
+} from '../../utils/ApiCall';
 import { useAuth } from '../../Context/AuthContext';
 
 import DeleteIcon from '@mui/icons-material/Delete';
-export default function LikedVideos() {
+export const LikedVideos = () => {
   const { likedVideo, dispatch, videoList } = useData();
-  const { token } = useAuth();
+  const { token, userId } = useAuth();
   const extractVideoFromLikedVideos = videoList?.filter((video) => {
     return likedVideo?.find((el) => el._id === video._id);
   });
@@ -23,20 +27,26 @@ export default function LikedVideos() {
     <main>
       <h1>Liked Videos</h1>
       <div className='video__item'>
-        <ul>
+        <ul className='history__list'>
           {extractVideoFromLikedVideos.length !== 0 ? (
             extractVideoFromLikedVideos.map((video, i) => {
               return (
                 <div className='container' key={i}>
                   <button
                     className='liked__remove__btn'
-                    onClick={() =>
+                    onClick={() => {
                       deleteFromLikedVideos({
                         dispatch,
                         token,
                         _id: video?._id,
-                      })
-                    }
+                      });
+                      addToLikedByUser({
+                        dispatch,
+                        _id: video?._id,
+                        token,
+                        userId,
+                      });
+                    }}
                   >
                     <DeleteIcon />
                   </button>
@@ -54,9 +64,7 @@ export default function LikedVideos() {
                     {' '}
                     <div className='liked__video__body'>
                       <img src={video?.image} alt='error' />
-                      <div style={{ marginTop: '1rem', width: '370px' }}>
-                        {video?.title}
-                      </div>
+                      <div style={{ width: '100%' }}>{video?.title}</div>
                       <p>
                         {video?.views} • <span>{video?.date}</span>
                       </p>
@@ -72,4 +80,4 @@ export default function LikedVideos() {
       </div>
     </main>
   );
-}
+};

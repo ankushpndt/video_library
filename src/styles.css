@@ -78,7 +78,6 @@ main {
     display: grid;
   }
   .app__body {
-    font-family: sans-serif;
     display: grid;
     grid-template-columns: 200px 250px;
     grid-gap: 0.5rem;

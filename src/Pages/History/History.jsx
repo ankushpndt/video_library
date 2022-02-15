@@ -21,7 +21,7 @@ export const History = () => {
     <main>
       <h1>History</h1>
       <div className='video__item'>
-        <ul>
+        <ul className='history__list'>
           {extractVideoFromHistory?.length > 0 ? (
             extractVideoFromHistory?.map((video, i) => {
               return (

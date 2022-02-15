@@ -36,6 +36,7 @@ export const addToLikedVideos = async ({ dispatch, token, _id }) => {
       type: 'ADD_TO_LIKEDVIDEOS',
       payload: response.data.updatedLikedVideos,
     });
+    console.log(response.data);
   } catch (err) {
     toast.dark(err.response.data.message);
     console.log(err.response.data);

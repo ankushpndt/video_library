@@ -27,10 +27,10 @@ export const Login = () => {
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'column',
-          margin: '4rem auto 2rem auto',
+          margin: '1rem auto',
           padding: '4rem',
           border: '2px solid #f0f0f0',
-          width: '25rem',
+          width: '20rem',
         }}
       >
         <h2>Login</h2>

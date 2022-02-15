@@ -17,7 +17,7 @@ export const WatchLater = () => {
     <main>
       <h1>Watch Later</h1>
       <div className='video__item'>
-        <ul>
+        <ul className='history__list'>
           {extractVideoFromWatchLater?.length > 0 ? (
             extractVideoFromWatchLater?.map((video, i) => {
               return (

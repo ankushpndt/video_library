@@ -18,7 +18,7 @@ import {
 } from './utils/ApiCall';
 import { useAuth } from './Context/AuthContext';
 
-export const VideoPlayer = () => {
+export const VideoPlayer = ({ setOpen }) => {
   // const [sizeOfWindow, setSizeOfWindow] = useState(window.innerWidth);
   const { videoList, dispatch } = useData();
   const { videoId } = useParams();
@@ -31,6 +31,7 @@ export const VideoPlayer = () => {
   const navigate = useNavigate();
 
   const toggleModal = () => {
+    setOpen(false);
     login ? setModal(!modal) : navigate('/login');
   };
   const opts = {
