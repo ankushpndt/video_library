@@ -64,7 +64,9 @@ export const LikedVideos = () => {
                     {' '}
                     <div className='liked__video__body'>
                       <img src={video?.image} alt='error' />
-                      <div style={{ width: '100%' }}>{video?.title}</div>
+                      <div style={{ width: '100%', paddingTop: '1rem' }}>
+                        {video?.title}
+                      </div>
                       <p>
                         {video?.views} • <span>{video?.date}</span>
                       </p>

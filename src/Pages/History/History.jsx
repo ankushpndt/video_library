@@ -47,7 +47,7 @@ export const History = () => {
                     <div className='liked__video__body'>
                       <img src={video?.image} alt='error' />
                       <div className='history__info'>
-                        <div>{video?.title}</div>
+                        <div style={{ paddingTop: '1rem' }}>{video?.title}</div>
                         <p>{video?.views}</p>
                       </div>
                     </div>
