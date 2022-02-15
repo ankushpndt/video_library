@@ -117,9 +117,7 @@ export const VideoPlayer = ({ setOpen }) => {
                   />
                 )}
                 <div className='like__length' style={{ paddingLeft: '0.4rem' }}>
-                  {video?.likedByUser?.length > 0
-                    ? video?.likedByUser?.length
-                    : 0}
+                  {video?.likedByUser?.length}
                 </div>
               </span>
               <ThumbDownAltIcon />

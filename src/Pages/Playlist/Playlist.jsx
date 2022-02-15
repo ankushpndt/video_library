@@ -17,11 +17,15 @@ export const Playlist = () => {
     <main className='playlist__container'>
       <h1>Playlist</h1>
       <div className='video__item'>
-        {playlist?.map((playlistItem, i) => (
-          <div className='container' key={i}>
-            <PlaylistOverview playlistItem={playlistItem} />
-          </div>
-        ))}
+        {playlist.length > 0 ? (
+          playlist?.map((playlistItem, i) => (
+            <div className='container' key={i}>
+              <PlaylistOverview playlistItem={playlistItem} />
+            </div>
+          ))
+        ) : (
+          <div className='empty__text'>There is no playlist here.</div>
+        )}
       </div>
     </main>
   );
