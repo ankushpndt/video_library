@@ -104,6 +104,7 @@ h1 {
     align-items: center;
     margin-top: 15rem;
     color: gray;
+    width: 100%;
   }
   .liked__video__body img {
     width: 370px;
