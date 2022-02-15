@@ -44,12 +44,20 @@ export const AuthProvider = ({ children }) => {
       console.log(error.response);
     }
   };
-  const signUpUser = ({ token }) => {
+  const signUpUser = ({ token, userName, userid }) => {
+    console.log({ token, userName, userid });
     setToken(token);
     setLogin(true);
+    setUser(userName);
+    setUserId(userid);
     localStorage.setItem(
       'login',
-      JSON.stringify({ isUserLoggedIn: true, token })
+      JSON.stringify({
+        isUserLoggedIn: true,
+        token,
+        user: userName,
+        userId: userid,
+      })
     );
 
     toast.dark('Signed Up successfully!');
