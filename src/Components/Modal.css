@@ -10,7 +10,8 @@ body.active-modal {
 } */
 
 .overlay {
-  width: 100vw;
+  /* width: 100vw; */
+  overflow-y: hidden;
   height: 100vh;
   top: 0;
   left: 0;
@@ -49,3 +50,6 @@ body.active-modal {
   padding: 1rem;
   color: gray;
 }
+/* @media screen and (max-width:640px) {
+  
+} */
