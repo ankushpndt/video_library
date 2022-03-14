@@ -8,20 +8,6 @@ export const Searchbar = () => {
 
   const [toggleDropbox, setToggleDropbox] = useState(false);
 
-  //   const timeoutRef = useRef(null);
-  //   useEffect(() => {
-  //     if (timeoutRef.current !== null) {
-  //       clearTimeout(timeoutRef.current);
-  //     }
-
-  //     timeoutRef.current = setTimeout(() => {
-  //       timeoutRef.current = null;
-  //       if (searchTerm !== '') {
-
-  //       }
-  //     }, 1000);
-  //   }, [searchTerm]);
-  //   console.log(result);
   return (
     <div>
       <div className='search__bar'>
