@@ -46,7 +46,7 @@ export const App = () => {
         <aside className='aside'>
           <NavLink
             style={({ isActive }) => {
-              return { color: isActive ? 'red' : 'black' };
+              return { color: isActive ? '#4c1d95' : 'black' };
             }}
             className='video__route'
             to='/'
@@ -58,7 +58,7 @@ export const App = () => {
           </NavLink>
           <NavLink
             style={({ isActive }) => {
-              return { color: isActive ? 'red' : 'black' };
+              return { color: isActive ? '#4c1d95' : 'black' };
             }}
             className='video__route'
             to='/playlist'
@@ -70,7 +70,7 @@ export const App = () => {
           </NavLink>
           <NavLink
             style={({ isActive }) => {
-              return { color: isActive ? 'red' : 'black' };
+              return { color: isActive ? '#4c1d95' : 'black' };
             }}
             className='video__route'
             to='/history'
@@ -82,7 +82,7 @@ export const App = () => {
           </NavLink>
           <NavLink
             style={({ isActive }) => {
-              return { color: isActive ? 'red' : 'black' };
+              return { color: isActive ? '#4c1d95' : 'black' };
             }}
             className='video__route'
             to='/watchLater'
@@ -94,7 +94,7 @@ export const App = () => {
           </NavLink>
           <NavLink
             style={({ isActive }) => {
-              return { color: isActive ? 'red' : 'black' };
+              return { color: isActive ? '#4c1d95' : 'black' };
             }}
             className='video__route'
             to='/likedVideos'
@@ -107,7 +107,7 @@ export const App = () => {
           {!login && (
             <NavLink
               style={({ isActive }) => {
-                return { color: isActive ? 'red' : 'black' };
+                return { color: isActive ? '#4c1d95' : 'black' };
               }}
               className='video__route'
               to='/login'
@@ -121,7 +121,7 @@ export const App = () => {
           {!login && (
             <NavLink
               style={({ isActive }) => {
-                return { color: isActive ? 'red' : 'black' };
+                return { color: isActive ? '#4c1d95' : 'black' };
               }}
               className='video__route'
               to='/signup'
@@ -135,7 +135,7 @@ export const App = () => {
           {login ? (
             <NavLink
               style={({ isActive }) => {
-                return { color: isActive ? 'red' : 'black' };
+                return { color: isActive ? '#4c1d95' : 'black' };
               }}
               className='video__route'
               to='/login'
@@ -174,7 +174,7 @@ export const App = () => {
                 {' '}
                 <NavLink
                   style={({ isActive }) => {
-                    return { color: isActive ? 'red' : 'black' };
+                    return { color: isActive ? '#4c1d95' : 'black' };
                   }}
                   className='menu__link'
                   to='/'
@@ -188,7 +188,7 @@ export const App = () => {
               <li>
                 <NavLink
                   style={({ isActive }) => {
-                    return { color: isActive ? 'red' : 'black' };
+                    return { color: isActive ? '#4c1d95' : 'black' };
                   }}
                   className='menu__link'
                   to='/playlist'
@@ -202,7 +202,7 @@ export const App = () => {
               <li>
                 <NavLink
                   style={({ isActive }) => {
-                    return { color: isActive ? 'red' : 'black' };
+                    return { color: isActive ? '#4c1d95' : 'black' };
                   }}
                   className='menu__link'
                   to='/history'
@@ -216,7 +216,7 @@ export const App = () => {
               <li>
                 <NavLink
                   style={({ isActive }) => {
-                    return { color: isActive ? 'red' : 'black' };
+                    return { color: isActive ? '#4c1d95' : 'black' };
                   }}
                   className='menu__link'
                   to='/watchLater'
@@ -230,7 +230,7 @@ export const App = () => {
               <li>
                 <NavLink
                   style={({ isActive }) => {
-                    return { color: isActive ? 'red' : 'black' };
+                    return { color: isActive ? '#4c1d95' : 'black' };
                   }}
                   className='menu__link'
                   to='/likedVideos'
@@ -246,7 +246,7 @@ export const App = () => {
                 <li>
                   <NavLink
                     style={({ isActive }) => {
-                      return { color: isActive ? 'red' : 'black' };
+                      return { color: isActive ? '#4c1d95' : 'black' };
                     }}
                     className='menu__link'
                     to='/login'
@@ -262,7 +262,7 @@ export const App = () => {
                 <li>
                   <NavLink
                     style={({ isActive }) => {
-                      return { color: isActive ? 'red' : 'black' };
+                      return { color: isActive ? '#4c1d95' : 'black' };
                     }}
                     className='menu__link'
                     to='/signup'
@@ -279,7 +279,7 @@ export const App = () => {
                   <NavLink
                     className='menu__link'
                     style={({ isActive }) => {
-                      return { color: isActive ? 'red' : 'black' };
+                      return { color: isActive ? '#4c1d95' : 'black' };
                     }}
                     to='/login'
                     onClick={userLogout}

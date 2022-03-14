@@ -60,7 +60,7 @@ main {
   color: black;
 }
 .menu__link:hover {
-  background-color: #4c1d95;
+  background-color: red;
   color: white;
 }
 .menu__drawer__active {
