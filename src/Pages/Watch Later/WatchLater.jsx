@@ -4,19 +4,20 @@ import { useData } from '../../Context/DataContext';
 import { getWatchLater, deleteFromWatchLater } from '../../utils/ApiCall';
 import { useAuth } from '../../Context/AuthContext';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Loader } from '../../Components/Loader';
 export const WatchLater = () => {
-  const { watchLater, dispatch, videoList } = useData();
+  const { watchLater, dispatch, videoList,setLoader,loader } = useData();
   const { token } = useAuth();
   const extractVideoFromWatchLater = videoList?.filter((video) => {
     return watchLater?.find((el) => el._id === video._id);
   });
   useEffect(() => {
-    getWatchLater(dispatch, token);
-  }, [dispatch, token]);
+    getWatchLater(dispatch, token,setLoader);
+  }, [dispatch, token,setLoader]);
   return (
     <main>
       <h1>Watch Later</h1>
-      <div className='video__item'>
+      {!loader?<div className='video__item'>
         <ul className='history__list'>
           {extractVideoFromWatchLater?.length > 0 ? (
             extractVideoFromWatchLater?.map((video, i) => {
@@ -60,7 +61,7 @@ export const WatchLater = () => {
             <div className='empty__text'>There is no video here.</div>
           )}
         </ul>
-      </div>
+      </div>:<Loader/>}
     </main>
   );
 };

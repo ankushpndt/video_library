@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+import { Loader } from '../../Components/Loader';
 import { Link } from 'react-router-dom';
 import '../../Videos.css';
 import { useData } from '../../Context/DataContext';
@@ -12,7 +12,7 @@ import { useAuth } from '../../Context/AuthContext';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 export const LikedVideos = () => {
-  const { likedVideo, dispatch, videoList } = useData();
+  const { likedVideo, dispatch, videoList ,setLoader,loader} = useData();
   const { token, userId } = useAuth();
   const extractVideoFromLikedVideos = videoList?.filter((video) => {
     return likedVideo?.find((el) => el._id === video._id);
@@ -20,13 +20,13 @@ export const LikedVideos = () => {
 
   useEffect(() => {
     if (token) {
-      getLikedVideos(dispatch, token);
+      getLikedVideos(dispatch, token,setLoader);
     }
-  }, [dispatch, token]);
+  }, [dispatch, token,setLoader]);
   return (
     <main>
       <h1>Liked Videos</h1>
-      <div className='video__item'>
+      {!loader?<div className='video__item'>
         <ul className='history__list'>
           {extractVideoFromLikedVideos.length !== 0 ? (
             extractVideoFromLikedVideos.map((video, i) => {
@@ -79,7 +79,7 @@ export const LikedVideos = () => {
             <div className='empty__text'>There is no video here.</div>
           )}
         </ul>
-      </div>
+      </div>:<Loader/>}
     </main>
   );
 };

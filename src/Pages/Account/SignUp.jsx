@@ -4,23 +4,26 @@ import { NavLink } from 'react-router-dom';
 import { TextField } from '@mui/material';
 import './Account.css';
 import { validateForm } from '../../Components/ValidateForm';
+import { useData } from '../../Context/DataContext';
+import { Loader } from '../../Components/Loader';
 export const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const { signUpWithCredentials, error, setError } = useAuth();
+  const {loader,setLoader}=useData()
   const [errorMessage, setErrorMessage] = useState('');
   const submitHandler = async (e) => {
     e.preventDefault();
 
     validateForm({ name, email, password, setErrorMessage }) &&
-      signUpWithCredentials(name, email, password);
+      signUpWithCredentials(name, email, password,setLoader);
     setError('');
   };
-  console.log(errorMessage);
+
   return (
     <div className='signup'>
-      <form
+      {!loader?<form
         style={{
           display: 'flex',
           justifyContent: 'center',
@@ -82,7 +85,7 @@ export const SignUp = () => {
             Login instead
           </NavLink>
         </p>
-      </form>
+      </form>:<Loader/>}
     </div>
   );
 };

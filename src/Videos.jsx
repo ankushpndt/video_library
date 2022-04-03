@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import './Videos.css';
 import { useData } from './Context/DataContext';
+import {Loader} from "./Components/Loader"
 export const Videos = () => {
-  const { videoList } = useData();
+  const { videoList,loader } = useData();
 
   return (
     <div className='video__item'>
-      <ul className='video__item__list'>
+      {!loader?<ul className='video__item__list'>
         {videoList?.map(({ title, videoId, date, views, image }, i) => {
           return (
             <div className='video__list' key={i}>
@@ -31,7 +32,7 @@ export const Videos = () => {
             </div>
           );
         })}
-      </ul>
+      </ul>:<Loader/>}
     </div>
   );
 };
