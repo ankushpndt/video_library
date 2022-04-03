@@ -1,134 +1,138 @@
-@import url('https://metal-ui.netlify.app/components/components.css');
+@import url("https://metal-ui.netlify.app/components/components.css");
 h1 {
-  padding: 1rem;
+	padding: 1rem;
 }
 .video__player {
-  height: 100%;
-  padding: 1rem;
+	height: 100%;
+	padding: 1rem;
 }
 .y__player {
-  width: 100%;
-  height: 300px;
+	width: 100%;
+	height: 300px;
 }
 
 .video__route {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
 }
 
 .video__item {
-  text-align: left;
+	text-align: left;
 }
 
 .video__item__list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
 }
 .video__item p {
-  color: gray;
+	color: gray;
 }
 .video__body {
-  padding: 1rem;
+	padding: 1rem;
 }
 .video__body__image {
-  width: 100%;
+	width: 100%;
 }
 .like__btn {
-  display: flex;
-  cursor: pointer;
-  gap: 1rem;
-  align-items: center;
+	display: flex;
+	cursor: pointer;
+	gap: 1rem;
+	align-items: center;
 }
 .info {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 
-  padding-top: 0.5rem;
+	padding-top: 0.5rem;
 }
 .playlist__btn {
-  display: flex;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+	display: flex;
+	width: 1.5rem;
+	height: 1.5rem;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
 }
 .liked__video__body {
-  padding: 0 1rem;
+	padding: 0 1rem;
 }
 .liked__video__body img {
-  width: 100%;
-  height: auto;
+	width: 100%;
+	height: auto;
 }
 .liked__remove__btn {
-  position: relative;
-  left: 89%;
-  top: 2rem;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  color: white;
+	position: relative;
+	left: 89%;
+	top: 2rem;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	color: white;
+}
+.video__list {
+	border-radius: 5px;
+	box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
 }
 @media screen and (min-width: 640px) {
-  .info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 850px;
-    padding-top: 0.5rem;
-  }
-  .y__player {
-    max-width: 850px;
-    height: 550px;
-    width: 100%;
-  }
-  .video__list {
-    max-width: 350px;
-  }
-  .history__list {
-    display: flex;
-    gap: 0 1rem;
-    flex-wrap: wrap;
-  }
-  .liked__video__body {
-    display: flex;
-    flex-direction: column;
-    gap: 0 1rem;
-    flex-wrap: wrap;
-    padding: 0;
-  }
-  .empty__text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15rem;
-    color: gray;
-    width: 100%;
-  }
-  .liked__video__body img {
-    width: 370px;
-    height: auto;
-  }
-  h1 {
-    padding: 0;
-  }
-  .liked__remove__btn {
-    position: relative;
-    left: 21.5rem;
-    top: 2rem;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: white;
-  }
-  .video__route {
-    text-decoration: none;
-    padding: 1rem 0;
-    display: flex;
-    align-items: center;
-  }
+	.info {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		max-width: 850px;
+		padding-top: 0.5rem;
+	}
+	.y__player {
+		max-width: 850px;
+		height: 550px;
+		width: 100%;
+	}
+	.video__list {
+		max-width: 350px;
+	}
+	.history__list {
+		display: flex;
+		gap: 0 1rem;
+		flex-wrap: wrap;
+	}
+	.liked__video__body {
+		display: flex;
+		flex-direction: column;
+		gap: 0 1rem;
+		flex-wrap: wrap;
+		padding: 0;
+	}
+	.empty__text {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 15rem;
+		color: gray;
+		width: 100%;
+	}
+	.liked__video__body img {
+		width: 370px;
+		height: auto;
+	}
+	h1 {
+		padding: 0;
+	}
+	.liked__remove__btn {
+		position: relative;
+		left: 21.5rem;
+		top: 2rem;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		color: white;
+	}
+	.video__route {
+		text-decoration: none;
+		padding: 1rem 0;
+		display: flex;
+		align-items: center;
+	}
 }
