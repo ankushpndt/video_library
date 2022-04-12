@@ -27,7 +27,6 @@ export const getLikedVideos = async (dispatch, token, setLoader) => {
 		setLoader(false);
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
-		console.log(err);
 	}
 };
 export const addToLikedVideos = async ({ dispatch, token, _id }) => {
@@ -42,10 +41,8 @@ export const addToLikedVideos = async ({ dispatch, token, _id }) => {
 			type: "ADD_TO_LIKEDVIDEOS",
 			payload: response.data.updatedLikedVideos,
 		});
-		console.log(response.data);
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
-		console.log(err.response.data);
 	}
 };
 export const addToLikedByUser = async ({ dispatch, token, _id, userId }) => {
@@ -66,7 +63,6 @@ export const addToLikedByUser = async ({ dispatch, token, _id, userId }) => {
 		});
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
-		console.log(err.response.data);
 	}
 };
 export const deleteFromLikedVideos = async ({ dispatch, token, _id }) => {
@@ -84,7 +80,6 @@ export const deleteFromLikedVideos = async ({ dispatch, token, _id }) => {
 		toast.dark("Deleted from liked videos");
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
-		console.log(err);
 	}
 };
 export const getWatchLater = async (dispatch, token, setLoader) => {
@@ -182,7 +177,7 @@ export const togglePlaylist = async ({ dispatch, token, playlistId, vId }) => {
 			payload: { data: response.data.updatedPlaylist, videoId: vId },
 		});
 	} catch (err) {
-		console.log(err);
+		toast.dark(err?.response?.data?.message);
 	}
 };
 export const deletePlaylist = async ({ dispatch, token, playlistId }) => {

@@ -35,11 +35,12 @@ h1 {
 .video__body__image {
 	width: 100%;
 }
-.like__btn {
+
+.info__btn {
 	display: flex;
-	cursor: pointer;
-	gap: 1rem;
 	align-items: center;
+	gap: 0.5rem;
+	justify-content: center;
 }
 .info {
 	display: flex;
