@@ -153,7 +153,7 @@ export const App = () => {
 				<div className="mobile__menu">
 					<div className="m__menu">
 						<Link to="/" className="logo">
-							<PlayCircleIcon />
+							Video Library
 						</Link>
 						<div>
 							<Searchbar />

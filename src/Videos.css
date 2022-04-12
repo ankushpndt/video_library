@@ -25,6 +25,7 @@ h1 {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1rem;
+	padding: 0 1rem;
 }
 .video__item p {
 	color: gray;
