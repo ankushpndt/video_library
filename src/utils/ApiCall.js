@@ -181,7 +181,6 @@ export const togglePlaylist = async ({ dispatch, token, playlistId, vId }) => {
 	}
 };
 export const deletePlaylist = async ({ dispatch, token, playlistId }) => {
-	console.log(playlistId);
 	try {
 		const response = await axios.delete(
 			`${API_URL}/playlist/delete/${playlistId}`,
@@ -193,7 +192,7 @@ export const deletePlaylist = async ({ dispatch, token, playlistId }) => {
 			type: "DELETE_PLAYLIST",
 			payload: response.data.deletedPlaylist,
 		});
-		toast.dark("Deleted from Playlist");
+		toast.dark("Playlist deleted");
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
 	}
