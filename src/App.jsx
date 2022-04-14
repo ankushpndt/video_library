@@ -268,7 +268,7 @@ export const App = () => {
 									>
 										<AccountCircleIcon />
 										<span style={{ fontSize: "1.2rem", paddingLeft: "0.5rem" }}>
-											SignUp
+											Sign Up
 										</span>
 									</NavLink>
 								</li>
