@@ -68,7 +68,7 @@ export const Modal = ({ modal, toggleModal, videoId }) => {
 											<input
 												type="checkbox"
 												id="cb"
-												checked={checkFunc({ playlistId: el?._id })}
+												checked={!!checkFunc({ playlistId: el?._id })}
 												onChange={() =>
 													togglePlaylist({
 														dispatch,
@@ -77,7 +77,6 @@ export const Modal = ({ modal, toggleModal, videoId }) => {
 														vId,
 													})
 												}
-												value=""
 												style={{ cursor: "pointer" }}
 											/>{" "}
 											<label htmlFor="cb" style={{ fontSize: "1.2rem" }}>

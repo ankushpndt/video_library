@@ -16,7 +16,6 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
-import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import { Login } from "./Pages/Account/Login";
 import { SignUp } from "./Pages/Account/SignUp";
 import { PrivateRoute } from "./Components/PrivateRoute";
