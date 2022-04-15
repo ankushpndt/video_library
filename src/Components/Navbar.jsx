@@ -12,52 +12,103 @@ export const Navbar = () => {
 		<div className="bottom__navbar__container">
 			<NavLink
 				style={({ isActive }) => {
-					return { color: isActive ? "red" : "white" };
+					return { color: isActive ? "#e74c3c" : "white" };
 				}}
 				to="/"
 				className="bottom__navbar__route"
 			>
 				<HomeIcon />
-				<span style={{ fontSize: "small" }}>Home</span>
+				<span
+					style={{
+						fontSize: "small",
+						textAlign: "center",
+						width: "50px",
+						lineHeight: "0.75rem",
+						fontWeight: "bold",
+					}}
+				>
+					Home
+				</span>
 			</NavLink>
 			<NavLink
 				style={({ isActive }) => {
-					return { color: isActive ? "red" : "white" };
+					return { color: isActive ? "#e74c3c" : "white" };
 				}}
 				to="/playlist"
 				className="bottom__navbar__route"
 			>
 				<PlaylistAddIcon />
-				<span style={{ fontSize: "small" }}>Playlist</span>
+				<span
+					style={{
+						fontSize: "small",
+						textAlign: "center",
+						width: "50px",
+						lineHeight: "0.75rem",
+						fontWeight: "bold",
+					}}
+				>
+					Playlist
+				</span>
 			</NavLink>
 			<NavLink
 				style={({ isActive }) => {
-					return { color: isActive ? "red" : "white" };
+					return { color: isActive ? "#e74c3c" : "white" };
 				}}
 				to="/history"
 				className="bottom__navbar__route"
 			>
 				<HistoryIcon />
-				<span style={{ fontSize: "small" }}>History</span>
+				<span
+					style={{
+						fontSize: "small",
+						textAlign: "center",
+						width: "50px",
+						lineHeight: "0.75rem",
+						fontWeight: "bold",
+					}}
+				>
+					History
+				</span>
 			</NavLink>
 			<NavLink
 				style={({ isActive }) => {
-					return { color: isActive ? "red" : "white" };
+					return { color: isActive ? "#e74c3c" : "white" };
 				}}
 				to="/watchLater"
 				className="bottom__navbar__route"
 			>
 				<WatchLaterIcon />
-				<span style={{ fontSize: "small" }}>Watch Later</span>
+				<span
+					style={{
+						fontSize: "small",
+						textAlign: "center",
+						width: "50px",
+						lineHeight: "0.85rem",
+						fontWeight: "bold",
+					}}
+				>
+					Watch Later
+				</span>
 			</NavLink>
 			<NavLink
 				style={({ isActive }) => {
-					return { color: isActive ? "red" : "white" };
+					return { color: isActive ? "#e74c3c" : "white" };
 				}}
 				to="/likedVideos"
 				className="bottom__navbar__route"
 			>
-				<ThumbUpIcon /> <span style={{ fontSize: "small" }}>Liked Videos</span>
+				<ThumbUpIcon />{" "}
+				<span
+					style={{
+						fontSize: "small",
+						textAlign: "center",
+						width: "50px",
+						lineHeight: "0.75rem",
+						fontWeight: "bold",
+					}}
+				>
+					Liked Videos
+				</span>
 			</NavLink>{" "}
 		</div>
 	);

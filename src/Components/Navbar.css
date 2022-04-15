@@ -3,7 +3,7 @@
 	justify-content: space-between;
 	gap: 1rem;
 	background-color: rgba(32, 32, 32, 1);
-	padding: 1rem;
+	padding: 0.5rem 1rem;
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -17,6 +17,5 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	color: white;
 	gap: 0.2rem;
 }
