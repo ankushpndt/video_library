@@ -25,6 +25,7 @@ import { getHistory, getVideos } from "./utils/ApiCall";
 import { Searchbar } from "./Components/Searchbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Navbar } from "./Components/Navbar";
 
 export const App = () => {
 	const { userLogout, login, token } = useAuth();
@@ -164,12 +165,15 @@ export const App = () => {
 							<MenuIcon />
 						</button>{" "}
 					</div>
+					<div className="bottom__navbar">
+						<Navbar />
+					</div>
 					<div
 						className={open ? "menu__drawer__active" : "menu__drawer"}
 						onClick={() => setOpen(false)}
 					>
 						<ul className="menu">
-							<li>
+							{/* <li>
 								{" "}
 								<NavLink
 									style={({ isActive }) => {
@@ -239,7 +243,7 @@ export const App = () => {
 										Liked Videos
 									</span>
 								</NavLink>{" "}
-							</li>
+							</li> */}
 
 							{!login && (
 								<li>

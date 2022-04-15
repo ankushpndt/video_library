@@ -18,6 +18,9 @@
 aside {
 	grid-area: aside;
 }
+.bottom__navbar {
+	display: flex;
+}
 header {
 	grid-area: header;
 }
@@ -81,6 +84,9 @@ main {
 	}
 	.aside {
 		display: grid;
+	}
+	.bottom__navbar {
+		display: none;
 	}
 	.app__body {
 		display: grid;
