@@ -65,6 +65,7 @@ h1 {
 .liked__video__body img {
 	width: 100%;
 	height: auto;
+	border-radius: 5px;
 }
 .liked__remove__btn {
 	position: relative;

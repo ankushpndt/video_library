@@ -12,7 +12,7 @@ export const Navbar = () => {
 		<div className="bottom__navbar__container">
 			<NavLink
 				style={({ isActive }) => {
-					return { color: isActive ? "#e74c3c" : "black" };
+					return { color: isActive ? "#e74c3c" : "white" };
 				}}
 				to="/"
 				className="bottom__navbar__route"
@@ -32,7 +32,7 @@ export const Navbar = () => {
 			</NavLink>
 			<NavLink
 				style={({ isActive }) => {
-					return { color: isActive ? "#e74c3c" : "black" };
+					return { color: isActive ? "#e74c3c" : "white" };
 				}}
 				to="/playlist"
 				className="bottom__navbar__route"
@@ -52,7 +52,7 @@ export const Navbar = () => {
 			</NavLink>
 			<NavLink
 				style={({ isActive }) => {
-					return { color: isActive ? "#e74c3c" : "black" };
+					return { color: isActive ? "#e74c3c" : "white" };
 				}}
 				to="/history"
 				className="bottom__navbar__route"
@@ -72,7 +72,7 @@ export const Navbar = () => {
 			</NavLink>
 			<NavLink
 				style={({ isActive }) => {
-					return { color: isActive ? "#e74c3c" : "black" };
+					return { color: isActive ? "#e74c3c" : "white" };
 				}}
 				to="/watchLater"
 				className="bottom__navbar__route"
@@ -92,7 +92,7 @@ export const Navbar = () => {
 			</NavLink>
 			<NavLink
 				style={({ isActive }) => {
-					return { color: isActive ? "#e74c3c" : "black" };
+					return { color: isActive ? "#e74c3c" : "white" };
 				}}
 				to="/likedVideos"
 				className="bottom__navbar__route"
