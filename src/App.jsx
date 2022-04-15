@@ -41,7 +41,14 @@ export const App = () => {
 		<div className="App">
 			<div className="app__body">
 				<header className="header">
-					<Searchbar />
+					<Link to="/" className="logo">
+						Video Library
+					</Link>
+					<div
+						style={{ display: "flex", justifyContent: "center", width: "100%" }}
+					>
+						<Searchbar />
+					</div>
 				</header>
 				<aside className="aside">
 					<NavLink

@@ -14,7 +14,7 @@
 .searchBox {
 	position: absolute;
 	top: 2.5rem;
-	right: -5rem;
+	right: -2rem;
 	width: 350px;
 	background: var(--secondary-color);
 	border: 1px solid var(--tertiary-color);
@@ -143,6 +143,7 @@
 }
 @media (max-width: 648px) {
 	.searchBox {
-		width: 420px;
+		right: -42px;
+		width: 350px;
 	}
 }
