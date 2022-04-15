@@ -87,7 +87,7 @@ export const Navbar = () => {
 						fontWeight: "bold",
 					}}
 				>
-					Watch Later
+					Later
 				</span>
 			</NavLink>
 			<NavLink
@@ -107,7 +107,7 @@ export const Navbar = () => {
 						fontWeight: "bold",
 					}}
 				>
-					Liked Videos
+					Liked
 				</span>
 			</NavLink>{" "}
 		</div>
