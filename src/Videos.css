@@ -19,13 +19,15 @@ h1 {
 
 .video__item {
 	text-align: left;
+	padding-bottom: 1rem;
+	margin-bottom: 3rem;
 }
 
 .video__item__list {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1rem;
-	padding: 0 1rem;
+	padding-bottom: 1rem;
 }
 .video__item p {
 	color: gray;
