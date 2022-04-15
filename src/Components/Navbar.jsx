@@ -5,11 +5,9 @@ import HomeIcon from "@mui/icons-material/Home";
 import HistoryIcon from "@mui/icons-material/History";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import { useAuth } from "../Context/AuthContext";
+
 import "./Navbar.css";
 export const Navbar = () => {
-	const { userLogout, login } = useAuth();
-
 	return (
 		<div className="bottom__navbar__container">
 			<NavLink
