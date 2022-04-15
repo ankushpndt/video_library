@@ -46,7 +46,7 @@ export const App = () => {
 				<aside className="aside">
 					<NavLink
 						style={({ isActive }) => {
-							return { color: isActive ? "#4c1d95" : "black" };
+							return { color: isActive ? "rgb(231, 76, 60)" : "black" };
 						}}
 						className="video__route"
 						to="/"
@@ -58,7 +58,7 @@ export const App = () => {
 					</NavLink>
 					<NavLink
 						style={({ isActive }) => {
-							return { color: isActive ? "#4c1d95" : "black" };
+							return { color: isActive ? "rgb(231, 76, 60)" : "black" };
 						}}
 						className="video__route"
 						to="/playlist"
@@ -70,7 +70,7 @@ export const App = () => {
 					</NavLink>
 					<NavLink
 						style={({ isActive }) => {
-							return { color: isActive ? "#4c1d95" : "black" };
+							return { color: isActive ? "rgb(231, 76, 60)" : "black" };
 						}}
 						className="video__route"
 						to="/history"
@@ -82,7 +82,7 @@ export const App = () => {
 					</NavLink>
 					<NavLink
 						style={({ isActive }) => {
-							return { color: isActive ? "#4c1d95" : "black" };
+							return { color: isActive ? "rgb(231, 76, 60)" : "black" };
 						}}
 						className="video__route"
 						to="/watchLater"
@@ -94,7 +94,7 @@ export const App = () => {
 					</NavLink>
 					<NavLink
 						style={({ isActive }) => {
-							return { color: isActive ? "#4c1d95" : "black" };
+							return { color: isActive ? "rgb(231, 76, 60)" : "black" };
 						}}
 						className="video__route"
 						to="/likedVideos"
@@ -107,7 +107,7 @@ export const App = () => {
 					{!login && (
 						<NavLink
 							style={({ isActive }) => {
-								return { color: isActive ? "#4c1d95" : "black" };
+								return { color: isActive ? "rgb(231, 76, 60)" : "black" };
 							}}
 							className="video__route"
 							to="/login"
@@ -121,7 +121,7 @@ export const App = () => {
 					{!login && (
 						<NavLink
 							style={({ isActive }) => {
-								return { color: isActive ? "#4c1d95" : "black" };
+								return { color: isActive ? "rgb(231, 76, 60)" : "black" };
 							}}
 							className="video__route"
 							to="/signup"
@@ -135,7 +135,7 @@ export const App = () => {
 					{login ? (
 						<NavLink
 							style={({ isActive }) => {
-								return { color: isActive ? "#4c1d95" : "black" };
+								return { color: isActive ? "rgb(231, 76, 60)" : "black" };
 							}}
 							className="video__route"
 							to="/login"
@@ -173,78 +173,6 @@ export const App = () => {
 						onClick={() => setOpen(false)}
 					>
 						<ul className="menu">
-							{/* <li>
-								{" "}
-								<NavLink
-									style={({ isActive }) => {
-										return { color: isActive ? "#4c1d95" : "black" };
-									}}
-									className="menu__link"
-									to="/"
-								>
-									<HomeIcon />
-									<span style={{ fontSize: "1.2rem", paddingLeft: "0.5rem" }}>
-										Home
-									</span>
-								</NavLink>
-							</li>
-							<li>
-								<NavLink
-									style={({ isActive }) => {
-										return { color: isActive ? "#4c1d95" : "black" };
-									}}
-									className="menu__link"
-									to="/playlist"
-								>
-									<PlaylistAddIcon />
-									<span style={{ fontSize: "1.2rem", paddingLeft: "0.5rem" }}>
-										Playlist
-									</span>
-								</NavLink>
-							</li>
-							<li>
-								<NavLink
-									style={({ isActive }) => {
-										return { color: isActive ? "#4c1d95" : "black" };
-									}}
-									className="menu__link"
-									to="/history"
-								>
-									<HistoryIcon />
-									<span style={{ fontSize: "1.2rem", paddingLeft: "0.5rem" }}>
-										History
-									</span>
-								</NavLink>
-							</li>
-							<li>
-								<NavLink
-									style={({ isActive }) => {
-										return { color: isActive ? "#4c1d95" : "black" };
-									}}
-									className="menu__link"
-									to="/watchLater"
-								>
-									<WatchLaterIcon />
-									<span style={{ fontSize: "1.2rem", paddingLeft: "0.5rem" }}>
-										Watch Later
-									</span>
-								</NavLink>
-							</li>
-							<li>
-								<NavLink
-									style={({ isActive }) => {
-										return { color: isActive ? "#4c1d95" : "black" };
-									}}
-									className="menu__link"
-									to="/likedVideos"
-								>
-									<ThumbUpIcon />{" "}
-									<span style={{ fontSize: "1.2rem", paddingLeft: "0.5rem" }}>
-										Liked Videos
-									</span>
-								</NavLink>{" "}
-							</li> */}
-
 							{!login && (
 								<li>
 									<NavLink
