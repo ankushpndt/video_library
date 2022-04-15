@@ -15,10 +15,6 @@
 	outline: var(--tertiary-color-shade-1);
 }
 
-.search__bar .search__bar__backdrop {
-	top: 3rem;
-}
-
 @media (max-width: 648px) {
 	.search__bar .search__input {
 		width: 13rem;

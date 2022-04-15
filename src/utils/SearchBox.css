@@ -140,6 +140,7 @@
 	min-height: 100%;
 	width: 100%;
 	z-index: 1;
+	background-color: rgba(32, 32, 32, 0.2);
 }
 @media (max-width: 648px) {
 	.searchBox {
