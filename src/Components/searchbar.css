@@ -4,12 +4,11 @@
 }
 
 .search__bar .search__input {
-	padding: 0.3rem;
+	padding: 0.5rem;
 	padding-left: 1.2rem;
 	border: 1px solid var(--tertiary-color);
 	border-radius: 2px;
 	width: 18rem;
-	height: 6vh;
 }
 
 .search__bar .search__input:focus {
