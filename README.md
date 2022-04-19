@@ -1,4 +1,4 @@
-# Video Library
+# Ligma Video Library
 
 # Tech Stack
 ## Frontend
