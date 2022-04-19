@@ -24,6 +24,7 @@
 .ghost__img {
 	width: 100%;
 	max-width: 120px;
+	margin-right: 1.2rem;
 }
 .page__not__found__heading {
 	color: var(--heading);
