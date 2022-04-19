@@ -26,7 +26,7 @@ import { Searchbar } from "./Components/Searchbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Navbar } from "./Components/Navbar";
-
+import { PageNotFound } from "./Components/PageNotFound";
 export const App = () => {
 	const { userLogout, login, token } = useAuth();
 
@@ -298,6 +298,7 @@ export const App = () => {
 							</main>
 						}
 					/>
+					<Route path="*" element={<PageNotFound />} />
 				</Routes>
 			</div>
 			<ToastContainer
