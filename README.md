@@ -19,7 +19,8 @@
 3. Create playlist, rename playlist and remove playlist.
 4. Add video to liked video, watch later, history and playlist.
 5. Delete video from liked video, watch later, history and playlist.
-6. Responsive
+6. Fully Responsive.
+7. Unit testing using jest.
 
 ## Tech Stack:
 1. Frontend - Javascript, CSS and React JS.
