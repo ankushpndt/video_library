@@ -32,9 +32,9 @@ export const Modal = ({ modal, toggleModal, videoId }) => {
 
 	const createPlaylist = (e) => {
 		e.preventDefault();
-		setPlaylistInput("");
-		createPlaylistName({ dispatch, token, vId, userId, playlistInput });
 		setPlaylistInput(playlistInput);
+		createPlaylistName({ dispatch, token, vId, userId, playlistInput });
+		setPlaylistInput("");
 	};
 
 	const checkFunc = ({ playlistId }) => {
