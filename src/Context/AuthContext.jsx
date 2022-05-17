@@ -42,11 +42,13 @@ export const AuthProvider = ({ children }) => {
 			}
 		} catch (error) {
 			setError(error.response.data);
-			console.log(error.response);
+			toast.dark(error.response.data.message, {
+				position: "bottom-center",
+			});
+			setLoader(false);
 		}
 	};
 	const signUpUser = ({ token, userName, userid }) => {
-		console.log({ token, userName, userid });
 		setToken(token);
 		setLogin(true);
 		setUser(userName);
@@ -61,7 +63,9 @@ export const AuthProvider = ({ children }) => {
 			})
 		);
 
-		toast.dark("Signed Up successfully!");
+		toast.dark("Signed Up successfully!", {
+			position: "bottom-center",
+		});
 	};
 
 	// login
@@ -82,7 +86,10 @@ export const AuthProvider = ({ children }) => {
 				setLoader(false);
 			}
 		} catch (error) {
-			console.log(error.response.data);
+			toast.dark(error.response.data.message, {
+				position: "bottom-center",
+			});
+			setLoader(false);
 			setError(error.response.data);
 		}
 	};
@@ -100,7 +107,9 @@ export const AuthProvider = ({ children }) => {
 				userId: userid,
 			})
 		);
-		toast.dark("Signed in successfully!");
+		toast.dark("Signed in successfully!", {
+			position: "bottom-center",
+		});
 	};
 	const userLogout = async () => {
 		localStorage.removeItem("login");
