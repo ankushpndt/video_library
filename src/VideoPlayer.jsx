@@ -5,7 +5,6 @@ import "./Videos.css";
 import { useData } from "./Context/DataContext";
 import { Modal } from "./Components/Modal";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
-import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
@@ -72,6 +71,7 @@ export const VideoPlayer = ({ setOpen }) => {
 							<span style={{ display: "flex", alignItems: "center" }}>
 								{video?.likedByUser?.includes(userId) ? (
 									<ThumbUpAltIcon
+										style={{ cursor: "pointer" }}
 										onClick={() => {
 											if (login) {
 												addToLikedVideos({
@@ -92,6 +92,7 @@ export const VideoPlayer = ({ setOpen }) => {
 									/>
 								) : (
 									<ThumbUpAltOutlinedIcon
+										style={{ cursor: "pointer" }}
 										onClick={() => {
 											if (login) {
 												addToLikedVideos({ dispatch, _id: video?._id, token });
@@ -112,11 +113,15 @@ export const VideoPlayer = ({ setOpen }) => {
 									{video?.likedByUser?.length}
 								</div>
 							</span>
-							<ThumbDownAltIcon />
 							<WatchLaterIcon
-								onClick={() =>
-									addToWatchLater({ dispatch, token, _id: video?._id })
-								}
+								style={{ cursor: "pointer" }}
+								onClick={() => {
+									if (login) {
+										addToWatchLater({ dispatch, token, _id: video?._id });
+									} else {
+										navigate("/login");
+									}
+								}}
 							/>
 							<button className="playlist__btn" onClick={toggleModal}>
 								<PlaylistAddIcon />
