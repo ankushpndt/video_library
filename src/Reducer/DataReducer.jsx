@@ -29,7 +29,7 @@ export const addUserToVideo = (state, videoId, userId) => {
 			return videoItem._id === videoId
 				? {
 						...videoItem,
-						likedByUser: [...videoItem.likedByUser, ...userId],
+						likedByUser: [...userId],
 				  }
 				: videoItem;
 		}),
@@ -42,9 +42,7 @@ export const removeUserFromVideo = (state, videoId, userId) => {
 			return videoItem._id === videoId
 				? {
 						...videoItem,
-						likedByUser: videoItem.likedByUser.filter((el) => {
-							return userId.find((user_Id) => el !== user_Id);
-						}),
+						likedByUser: [...userId],
 				  }
 				: videoItem;
 		}),

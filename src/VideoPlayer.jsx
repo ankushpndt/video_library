@@ -23,11 +23,9 @@ export const VideoPlayer = ({ setOpen }) => {
 	const getVideoDetails = (videos, videoId) =>
 		videos?.find((video) => video.videoId === videoId);
 	const video = getVideoDetails(videoList, videoId);
-
 	const { token, login, userId } = useAuth();
 	const [modal, setModal] = useState(false);
 	const navigate = useNavigate();
-
 	const toggleModal = () => {
 		setOpen(false);
 		login ? setModal(!modal) : navigate("/login");
@@ -43,22 +41,17 @@ export const VideoPlayer = ({ setOpen }) => {
 			getLikedVideos(dispatch, token, setLoader);
 		}
 	}, [dispatch, token, userId, setLoader]);
-
+	useEffect(() => {
+		if (login) {
+			addToHistory({ dispatch, _id: video?._id, token });
+		}
+	}, [dispatch, login, video?._id, token]);
 	return (
 		<main>
 			<div className="video__player">
 				<div className="video__responsive">
 					<div className="youtube__player">
-						<YouTube
-							className="y__player"
-							videoId={`${videoId}`}
-							opts={opts}
-							onPlay={() => {
-								if (login) {
-									addToHistory({ dispatch, _id: video?._id, token });
-								}
-							}}
-						/>
+						<YouTube className="y__player" videoId={videoId} opts={opts} />
 					</div>
 				</div>
 				<ul>

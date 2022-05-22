@@ -23,7 +23,7 @@ import { useAuth } from "./Context/AuthContext";
 import { useData } from "./Context/DataContext";
 import { getHistory, getVideos } from "./utils/ApiCall";
 import { Searchbar } from "./Components/Searchbar";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Navbar } from "./Components/Navbar";
 import { PageNotFound } from "./Components/PageNotFound";
@@ -305,6 +305,8 @@ export const App = () => {
 				position="bottom-center"
 				autoClose={3000}
 				hideProgressBar={true}
+				theme="dark"
+				transition={Slide}
 			/>
 		</div>
 	);

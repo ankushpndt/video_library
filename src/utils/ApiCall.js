@@ -9,7 +9,6 @@ export const getVideos = async (dispatch, setLoader) => {
 		setLoader(false);
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
-		console.log(err);
 	}
 };
 
@@ -31,16 +30,20 @@ export const getLikedVideos = async (dispatch, token, setLoader) => {
 };
 export const addToLikedVideos = async ({ dispatch, token, _id }) => {
 	try {
+		toast.loading("Please wait");
 		const response = await axios.post(
 			`${API_URL}/likedvideo/${_id}`,
 			{},
 			{ headers: { "auth-token": token } }
 		);
 
-		dispatch({
-			type: "ADD_TO_LIKEDVIDEOS",
-			payload: response.data.updatedLikedVideos,
-		});
+		if (response.data.success === true) {
+			toast.dismiss();
+			dispatch({
+				type: "ADD_TO_LIKEDVIDEOS",
+				payload: response.data.updatedLikedVideos,
+			});
+		}
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
 	}
@@ -52,32 +55,37 @@ export const addToLikedByUser = async ({ dispatch, token, _id, userId }) => {
 			{},
 			{ headers: { "auth-token": token } }
 		);
-
-		dispatch({
-			type: "ADD_TO_LIKED_BY_USER",
-			payload: {
-				data: response.data.updatedLikedByUser,
-				userId,
-				videoId: _id,
-			},
-		});
+		if (response.data.success === true) {
+			dispatch({
+				type: "ADD_TO_LIKED_BY_USER",
+				payload: {
+					data: response.data.updatedLikedByUser,
+					userId,
+					videoId: _id,
+				},
+			});
+		}
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
 	}
 };
 export const deleteFromLikedVideos = async ({ dispatch, token, _id }) => {
 	try {
+		toast.loading("Please wait");
 		const response = await axios.delete(
 			`${API_URL}/likedvideo/${_id}`,
 
 			{ headers: { "auth-token": token } }
 		);
 
-		dispatch({
-			type: "DELETE_FROM_LIKEDVIDEOS",
-			payload: response.data.likedVideos,
-		});
-		toast.dark("Deleted from liked videos");
+		if (response.data.success === true) {
+			toast.dismiss();
+			dispatch({
+				type: "DELETE_FROM_LIKEDVIDEOS",
+				payload: response.data.likedVideos,
+			});
+			toast.dark("Deleted from liked videos");
+		}
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
 	}
@@ -96,34 +104,40 @@ export const getWatchLater = async (dispatch, token, setLoader) => {
 };
 export const addToWatchLater = async ({ dispatch, token, _id }) => {
 	try {
+		toast.loading("Please wait");
 		const response = await axios.post(
 			`${API_URL}/watchlater/${_id}`,
 			{},
 			{ headers: { "auth-token": token } }
 		);
-
-		dispatch({
-			type: "ADD_TO_WATCHLATER",
-			payload: response.data.updatedWatchLater,
-		});
-		toast.dark("Added to watch later");
+		if (response.data.success === true) {
+			toast.dismiss();
+			dispatch({
+				type: "ADD_TO_WATCHLATER",
+				payload: response.data.updatedWatchLater,
+			});
+			toast.dark("Added to watch later");
+		}
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
 	}
 };
 export const deleteFromWatchLater = async ({ dispatch, token, _id }) => {
 	try {
+		toast.loading("Please wait");
 		const response = await axios.delete(
 			`${API_URL}/watchlater/${_id}`,
 
 			{ headers: { "auth-token": token } }
 		);
-
-		dispatch({
-			type: "DELETE_FROM_WATCHLATER",
-			payload: response.data.watchLater,
-		});
-		toast.dark("Deleted from watch later");
+		if (response.data.success === true) {
+			toast.dismiss();
+			dispatch({
+				type: "DELETE_FROM_WATCHLATER",
+				payload: response.data.watchLater,
+			});
+			toast.dark("Deleted from watch later");
+		}
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
 	}
@@ -149,19 +163,24 @@ export const createPlaylistName = async ({
 	vId,
 }) => {
 	try {
+		toast.loading("Please wait");
 		const response = await axios.post(
 			`${API_URL}/playlist`,
 			{ owner: userId, name: playlistInput, videos: vId },
 			{ headers: { "auth-token": token } }
 		);
-		dispatch({ type: "CREATE_PLAYLIST", payload: response.data.playlist });
-		toast.dark("Playlist created");
+		if (response.data.success === true) {
+			toast.dismiss();
+			dispatch({ type: "CREATE_PLAYLIST", payload: response.data.playlist });
+			toast.dark("Playlist created");
+		}
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
 	}
 };
 export const togglePlaylist = async ({ dispatch, token, playlistId, vId }) => {
 	try {
+		toast.loading("Please wait");
 		const response = await axios.post(
 			`${API_URL}/playlist/toggle/${playlistId}`,
 			{
@@ -171,28 +190,35 @@ export const togglePlaylist = async ({ dispatch, token, playlistId, vId }) => {
 				headers: { "auth-token": token },
 			}
 		);
-		toast.dark(response?.data?.message);
-		dispatch({
-			type: "TOGGLE_PLAYLIST",
-			payload: { data: response.data.updatedPlaylist, videoId: vId },
-		});
+		if (response.data.success === true) {
+			toast.dismiss();
+			toast.dark(response?.data?.message);
+			dispatch({
+				type: "TOGGLE_PLAYLIST",
+				payload: { data: response.data.updatedPlaylist, videoId: vId },
+			});
+		}
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
 	}
 };
 export const deletePlaylist = async ({ dispatch, token, playlistId }) => {
 	try {
+		toast.loading("Please wait");
 		const response = await axios.delete(
 			`${API_URL}/playlist/delete/${playlistId}`,
 			{
 				headers: { "auth-token": token },
 			}
 		);
-		dispatch({
-			type: "DELETE_PLAYLIST",
-			payload: response.data.deletedPlaylist,
-		});
-		toast.dark("Playlist deleted");
+		if (response.data.success === true) {
+			toast.dismiss();
+			dispatch({
+				type: "DELETE_PLAYLIST",
+				payload: response.data.deletedPlaylist,
+			});
+			toast.dark("Playlist deleted");
+		}
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
 	}
@@ -204,6 +230,7 @@ export const renamePlaylist = async ({
 	token,
 }) => {
 	try {
+		toast.loading("Please wait");
 		const response = await axios.post(
 			`${API_URL}/playlist/update/${playlistId}`,
 			{
@@ -213,12 +240,14 @@ export const renamePlaylist = async ({
 				headers: { "auth-token": token },
 			}
 		);
-
-		dispatch({
-			type: "RENAME_PLAYLIST",
-			payload: response.data.updatedPlaylistName,
-		});
-		toast.dark("Renamed the playlist");
+		if (response.data.success === true) {
+			toast.dismiss();
+			dispatch({
+				type: "RENAME_PLAYLIST",
+				payload: response.data.updatedPlaylistName,
+			});
+			toast.dark("Renamed the playlist");
+		}
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
 	}
@@ -251,6 +280,7 @@ export const addToHistory = async ({ dispatch, _id, token }) => {
 };
 export const deleteFromHistory = async ({ dispatch, _id, token }) => {
 	try {
+		toast.loading("Please wait");
 		const response = await axios.delete(
 			`${API_URL}/history/${_id}`,
 
@@ -258,12 +288,14 @@ export const deleteFromHistory = async ({ dispatch, _id, token }) => {
 				headers: { "auth-token": token },
 			}
 		);
-
-		dispatch({
-			type: "DELETE_FROM_HISTORY",
-			payload: response.data.history,
-		});
-		toast.dark("Deleted from history");
+		if (response.data.success === true) {
+			toast.dismiss();
+			dispatch({
+				type: "DELETE_FROM_HISTORY",
+				payload: response.data.history,
+			});
+			toast.dark("Deleted from history");
+		}
 	} catch (err) {
 		toast.dark(err?.response?.data?.message);
 	}
