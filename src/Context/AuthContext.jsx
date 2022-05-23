@@ -22,6 +22,7 @@ export const AuthProvider = ({ children }) => {
 	const [token, setToken] = useState(savedToken);
 	const [user, setUser] = useState(userName);
 	const [userId, setUserId] = useState(userid);
+	const [error, setError] = useState("");
 	const navigate = useNavigate();
 
 	//signup
@@ -44,6 +45,7 @@ export const AuthProvider = ({ children }) => {
 				position: "bottom-center",
 			});
 			setLoader(false);
+			setError(error.response.data?.errors);
 		}
 	};
 	const signUpUser = ({ token, userName, userid }) => {
