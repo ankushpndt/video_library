@@ -3,21 +3,16 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { TextField } from "@mui/material";
 import "./Account.css";
-import { validateForm } from "../../Components/ValidateForm";
 import { useData } from "../../Context/DataContext";
 import { Loader } from "../../Components/Loader";
 export const Login = () => {
-	const { loginWithCredentials, error, setError } = useAuth();
+	const { loginWithCredentials } = useAuth();
 	const { setLoader, loader } = useData();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [errorMessage, setErrorMessage] = useState("");
 	const submitHandler = (e) => {
 		e.preventDefault();
-
-		validateForm({ email, password, setErrorMessage }) &&
-			loginWithCredentials(email, password, setLoader);
-		setError("");
+		loginWithCredentials(email, password, setLoader);
 	};
 
 	return (
@@ -62,11 +57,6 @@ export const Login = () => {
 						required
 						value={password}
 					/>
-					<br />
-					<div className="name__error">
-						{errorMessage !== "" && errorMessage}
-					</div>
-					<div>{error?.message}</div>
 					<br />
 					{/*Login button*/}
 					<input type="submit" value="LOGIN" id="login__btn__outlined" />

@@ -8,7 +8,7 @@ export const getVideos = async (dispatch, setLoader) => {
 		dispatch({ type: "GET_VIDEOS", payload: response.data.videoList });
 		setLoader(false);
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.error(err?.response?.data?.message);
 	}
 };
 
@@ -45,7 +45,8 @@ export const addToLikedVideos = async ({ dispatch, token, _id }) => {
 			});
 		}
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.dismiss();
+		toast.error(err?.response?.data?.message);
 	}
 };
 export const addToLikedByUser = async ({ dispatch, token, _id, userId }) => {
@@ -66,7 +67,7 @@ export const addToLikedByUser = async ({ dispatch, token, _id, userId }) => {
 			});
 		}
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.error(err?.response?.data?.message);
 	}
 };
 export const deleteFromLikedVideos = async ({ dispatch, token, _id }) => {
@@ -84,10 +85,11 @@ export const deleteFromLikedVideos = async ({ dispatch, token, _id }) => {
 				type: "DELETE_FROM_LIKEDVIDEOS",
 				payload: response.data.likedVideos,
 			});
-			toast.dark("Deleted from liked videos");
+			toast.success("Deleted from liked videos");
 		}
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.dismiss();
+		toast.error(err?.response?.data?.message);
 	}
 };
 export const getWatchLater = async (dispatch, token, setLoader) => {
@@ -99,7 +101,7 @@ export const getWatchLater = async (dispatch, token, setLoader) => {
 		dispatch({ type: "GET_WATCHLATER", payload: response.data.watchLater });
 		setLoader(false);
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.error(err?.response?.data?.message);
 	}
 };
 export const addToWatchLater = async ({ dispatch, token, _id }) => {
@@ -116,10 +118,11 @@ export const addToWatchLater = async ({ dispatch, token, _id }) => {
 				type: "ADD_TO_WATCHLATER",
 				payload: response.data.updatedWatchLater,
 			});
-			toast.dark("Added to watch later");
+			toast.success("Added to watch later");
 		}
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.dismiss();
+		toast.error(err?.response?.data?.message);
 	}
 };
 export const deleteFromWatchLater = async ({ dispatch, token, _id }) => {
@@ -136,10 +139,11 @@ export const deleteFromWatchLater = async ({ dispatch, token, _id }) => {
 				type: "DELETE_FROM_WATCHLATER",
 				payload: response.data.watchLater,
 			});
-			toast.dark("Deleted from watch later");
+			toast.success("Deleted from watch later");
 		}
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.dismiss();
+		toast.error(err?.response?.data?.message);
 	}
 };
 export const getPlaylist = async ({ dispatch, token, userId, setLoader }) => {
@@ -152,7 +156,8 @@ export const getPlaylist = async ({ dispatch, token, userId, setLoader }) => {
 		dispatch({ type: "GET_PLAYLIST", payload: response.data.playlists });
 		setLoader(false);
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.dismiss();
+		toast.error(err?.response?.data?.message);
 	}
 };
 export const createPlaylistName = async ({
@@ -172,10 +177,11 @@ export const createPlaylistName = async ({
 		if (response.data.success === true) {
 			toast.dismiss();
 			dispatch({ type: "CREATE_PLAYLIST", payload: response.data.playlist });
-			toast.dark("Playlist created");
+			toast.success("Playlist created");
 		}
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.dismiss();
+		toast.error(err?.response?.data?.message);
 	}
 };
 export const togglePlaylist = async ({ dispatch, token, playlistId, vId }) => {
@@ -192,14 +198,16 @@ export const togglePlaylist = async ({ dispatch, token, playlistId, vId }) => {
 		);
 		if (response.data.success === true) {
 			toast.dismiss();
-			toast.dark(response?.data?.message);
+
 			dispatch({
 				type: "TOGGLE_PLAYLIST",
 				payload: { data: response.data.updatedPlaylist, videoId: vId },
 			});
+			toast.success(response?.data?.message);
 		}
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.dismiss();
+		toast.error(err?.response?.data?.message);
 	}
 };
 export const deletePlaylist = async ({ dispatch, token, playlistId }) => {
@@ -217,10 +225,11 @@ export const deletePlaylist = async ({ dispatch, token, playlistId }) => {
 				type: "DELETE_PLAYLIST",
 				payload: response.data.deletedPlaylist,
 			});
-			toast.dark("Playlist deleted");
+			toast.success("Playlist deleted");
 		}
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.dismiss();
+		toast.error(err?.response?.data?.message);
 	}
 };
 export const renamePlaylist = async ({
@@ -246,10 +255,11 @@ export const renamePlaylist = async ({
 				type: "RENAME_PLAYLIST",
 				payload: response.data.updatedPlaylistName,
 			});
-			toast.dark("Renamed the playlist");
+			toast.success("Renamed the playlist successfully");
 		}
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.dismiss();
+		toast.error(err?.response?.data?.message);
 	}
 };
 export const getHistory = async (dispatch, token, setLoader) => {
@@ -261,7 +271,7 @@ export const getHistory = async (dispatch, token, setLoader) => {
 		dispatch({ type: "GET_HISTORY", payload: response.data.history });
 		setLoader(false);
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.error(err?.response?.data?.message);
 	}
 };
 export const addToHistory = async ({ dispatch, _id, token }) => {
@@ -275,7 +285,7 @@ export const addToHistory = async ({ dispatch, _id, token }) => {
 		);
 		dispatch({ type: "ADD_TO_HISTORY", payload: response.data.updatedHistory });
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.error(err?.response?.data?.message);
 	}
 };
 export const deleteFromHistory = async ({ dispatch, _id, token }) => {
@@ -294,9 +304,10 @@ export const deleteFromHistory = async ({ dispatch, _id, token }) => {
 				type: "DELETE_FROM_HISTORY",
 				payload: response.data.history,
 			});
-			toast.dark("Deleted from history");
+			toast.success("Deleted from history");
 		}
 	} catch (err) {
-		toast.dark(err?.response?.data?.message);
+		toast.dismiss();
+		toast.error(err?.response?.data?.message);
 	}
 };

@@ -20,7 +20,6 @@ export const AuthProvider = ({ children }) => {
 
 	const [login, setLogin] = useState(isUserLoggedIn);
 	const [token, setToken] = useState(savedToken);
-	const [error, setError] = useState("");
 	const [user, setUser] = useState(userName);
 	const [userId, setUserId] = useState(userid);
 	const navigate = useNavigate();
@@ -41,8 +40,7 @@ export const AuthProvider = ({ children }) => {
 				setLoader(false);
 			}
 		} catch (error) {
-			setError(error.response.data);
-			toast.dark(error.response.data.message, {
+			toast.error(error.response.data.message, {
 				position: "bottom-center",
 			});
 			setLoader(false);
@@ -63,7 +61,7 @@ export const AuthProvider = ({ children }) => {
 			})
 		);
 
-		toast.dark("Signed Up successfully!", {
+		toast.success("Signed Up successfully!", {
 			position: "bottom-center",
 		});
 	};
@@ -86,11 +84,10 @@ export const AuthProvider = ({ children }) => {
 				setLoader(false);
 			}
 		} catch (error) {
-			toast.dark(error.response.data.message, {
+			toast.error(error.response.data.message, {
 				position: "bottom-center",
 			});
 			setLoader(false);
-			setError(error.response.data);
 		}
 	};
 	const loginUser = ({ token, userName, userid }) => {
@@ -107,7 +104,7 @@ export const AuthProvider = ({ children }) => {
 				userId: userid,
 			})
 		);
-		toast.dark("Signed in successfully!", {
+		toast.success("Signed in successfully!", {
 			position: "bottom-center",
 		});
 	};
@@ -117,7 +114,7 @@ export const AuthProvider = ({ children }) => {
 		setToken("");
 		setUser("");
 		setUserId("");
-		toast.dark("Logged out successfully");
+		toast.success("Logged out successfully");
 		navigate("/login");
 	};
 
@@ -127,12 +124,10 @@ export const AuthProvider = ({ children }) => {
 				login,
 				loginWithCredentials,
 				signUpWithCredentials,
-				error,
 				token,
 				userLogout,
 				user,
 				userId,
-				setError,
 			}}
 		>
 			{children}
