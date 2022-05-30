@@ -5,11 +5,16 @@ import { TextField } from "@mui/material";
 import "./Account.css";
 import { useData } from "../../Context/DataContext";
 import { Loader } from "../../Components/Loader";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 export const Login = () => {
 	const { loginWithCredentials } = useAuth();
 	const { setLoader, loader } = useData();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [showPass, setShowPass] = useState(false);
 	const submitHandler = (e) => {
 		e.preventDefault();
 		loginWithCredentials(email, password, setLoader);
@@ -50,12 +55,26 @@ export const Login = () => {
 					<TextField
 						id="standard__basic"
 						label="Password"
-						type="password"
+						type={showPass ? "text" : "password"}
 						name="password"
 						helperText="Enter your password here"
 						onChange={(e) => setPassword(e.target.value)}
 						required
 						value={password}
+						InputProps={{
+							endAdornment: (
+								<InputAdornment position="end">
+									<IconButton
+										aria-label="toggle password visibility"
+										onClick={() => setShowPass(!showPass)}
+										onMouseDown={(e) => e.preventDefault()}
+										edge="end"
+									>
+										{showPass ? <VisibilityOff /> : <Visibility />}
+									</IconButton>
+								</InputAdornment>
+							),
+						}}
 					/>
 					<br />
 					{/*Login button*/}
