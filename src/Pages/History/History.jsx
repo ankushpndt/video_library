@@ -18,14 +18,16 @@ export const History = () => {
 			getHistory(dispatch, token, setLoader);
 		}
 	}, [dispatch, token, setLoader]);
+	const reversedHistory = extractVideoFromHistory.slice(0).reverse();
+
 	return (
 		<main>
 			<h1>History</h1>
 			{!loader ? (
 				<div className="video__item">
 					<ul className="history__list">
-						{extractVideoFromHistory?.length > 0 ? (
-							extractVideoFromHistory?.map((video, i) => {
+						{reversedHistory?.length > 0 ? (
+							reversedHistory?.map((video, i) => {
 								return (
 									<div className="container" key={i}>
 										<button
