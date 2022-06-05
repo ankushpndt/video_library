@@ -50,7 +50,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 50%;
+	min-height: 90%;
 	color: var(--tertiary-color-shade-1);
 	font-weight: 700;
 	font-size: 0.8rem;

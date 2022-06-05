@@ -21,8 +21,10 @@ export const Searchbar = () => {
 				<input
 					type="search"
 					value={searchTerm}
-					onFocus={() => setToggleDropbox(true)}
-					onChange={(e) => setSearchTerm(e.target.value)}
+					onChange={(e) => {
+						setSearchTerm(e.target.value);
+						setToggleDropbox(true);
+					}}
 					className="search__input"
 					placeholder="Search"
 				/>

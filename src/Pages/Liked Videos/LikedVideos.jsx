@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Loader } from "../../Components/Loader";
 import { Link } from "react-router-dom";
 import "../../Videos.css";
@@ -9,9 +9,11 @@ import {
 	addToLikedByUser,
 } from "../../utils/ApiCall";
 import { useAuth } from "../../Context/AuthContext";
-
 import DeleteIcon from "@mui/icons-material/Delete";
+
 export const LikedVideos = () => {
+	const [disableLikedVideoDeleteBtn, setDisableLikedVideoDeleteBtn] =
+		useState(false);
 	const { likedVideo, dispatch, videoList, setLoader, loader } = useData();
 	const { token, userId } = useAuth();
 	const extractVideoFromLikedVideos = videoList?.filter((video) => {
@@ -40,6 +42,7 @@ export const LikedVideos = () => {
 													dispatch,
 													token,
 													_id: video?._id,
+													setDisableLikedVideoDeleteBtn,
 												});
 												addToLikedByUser({
 													dispatch,
@@ -48,6 +51,7 @@ export const LikedVideos = () => {
 													userId,
 												});
 											}}
+											disabled={disableLikedVideoDeleteBtn}
 										>
 											<DeleteIcon />
 										</button>

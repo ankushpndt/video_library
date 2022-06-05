@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useData } from "../../Context/DataContext";
 import { getWatchLater, deleteFromWatchLater } from "../../utils/ApiCall";
@@ -11,6 +11,7 @@ export const WatchLater = () => {
 	const extractVideoFromWatchLater = videoList?.filter((video) => {
 		return watchLater?.find((el) => el._id === video._id);
 	});
+	const [disableWatchLaterBtn, setDisableWatchLaterBtn] = useState(false);
 	useEffect(() => {
 		getWatchLater(dispatch, token, setLoader);
 	}, [dispatch, token, setLoader]);
@@ -31,8 +32,10 @@ export const WatchLater = () => {
 													dispatch,
 													token,
 													_id: video?._id,
+													setDisableWatchLaterBtn,
 												})
 											}
+											disabled={disableWatchLaterBtn}
 										>
 											<DeleteIcon />
 										</button>

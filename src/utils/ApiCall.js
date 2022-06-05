@@ -70,9 +70,15 @@ export const addToLikedByUser = async ({ dispatch, token, _id, userId }) => {
 		toast.error(err?.response?.data?.message);
 	}
 };
-export const deleteFromLikedVideos = async ({ dispatch, token, _id }) => {
+export const deleteFromLikedVideos = async ({
+	dispatch,
+	token,
+	_id,
+	setDisableLikedVideoDeleteBtn,
+}) => {
 	try {
 		toast.loading("Please wait");
+		setDisableLikedVideoDeleteBtn(true);
 		const response = await axios.delete(
 			`${API_URL}/likedvideo/${_id}`,
 
@@ -81,6 +87,7 @@ export const deleteFromLikedVideos = async ({ dispatch, token, _id }) => {
 
 		if (response.data.success === true) {
 			toast.dismiss();
+			setDisableLikedVideoDeleteBtn(false);
 			dispatch({
 				type: "DELETE_FROM_LIKEDVIDEOS",
 				payload: response.data.likedVideos,
@@ -125,9 +132,15 @@ export const addToWatchLater = async ({ dispatch, token, _id }) => {
 		toast.error(err?.response?.data?.message);
 	}
 };
-export const deleteFromWatchLater = async ({ dispatch, token, _id }) => {
+export const deleteFromWatchLater = async ({
+	dispatch,
+	token,
+	_id,
+	setDisableWatchLaterBtn,
+}) => {
 	try {
 		toast.loading("Please wait");
+		setDisableWatchLaterBtn(true);
 		const response = await axios.delete(
 			`${API_URL}/watchlater/${_id}`,
 
@@ -135,6 +148,7 @@ export const deleteFromWatchLater = async ({ dispatch, token, _id }) => {
 		);
 		if (response.data.success === true) {
 			toast.dismiss();
+			setDisableWatchLaterBtn(false);
 			dispatch({
 				type: "DELETE_FROM_WATCHLATER",
 				payload: response.data.watchLater,
@@ -210,9 +224,48 @@ export const togglePlaylist = async ({ dispatch, token, playlistId, vId }) => {
 		toast.error(err?.response?.data?.message);
 	}
 };
-export const deletePlaylist = async ({ dispatch, token, playlistId }) => {
+export const deleteVideoFromPlaylist = async ({
+	dispatch,
+	token,
+	playlistId,
+	vId,
+	setDisableBtn,
+}) => {
 	try {
 		toast.loading("Please wait");
+		setDisableBtn(true);
+		const response = await axios.post(
+			`${API_URL}/playlist/toggle/${playlistId}`,
+			{
+				videoId: vId,
+			},
+			{
+				headers: { "auth-token": token },
+			}
+		);
+		if (response.data.success === true) {
+			toast.dismiss();
+			setDisableBtn(false);
+			dispatch({
+				type: "TOGGLE_PLAYLIST",
+				payload: { data: response.data.updatedPlaylist, videoId: vId },
+			});
+			toast.success(response?.data?.message);
+		}
+	} catch (err) {
+		toast.dismiss();
+		toast.error(err?.response?.data?.message);
+	}
+};
+export const deletePlaylist = async ({
+	dispatch,
+	token,
+	playlistId,
+	setDisableDeleteBtn,
+}) => {
+	try {
+		toast.loading("Please wait");
+		setDisableDeleteBtn(true);
 		const response = await axios.delete(
 			`${API_URL}/playlist/delete/${playlistId}`,
 			{
@@ -221,6 +274,7 @@ export const deletePlaylist = async ({ dispatch, token, playlistId }) => {
 		);
 		if (response.data.success === true) {
 			toast.dismiss();
+			setDisableDeleteBtn(false);
 			dispatch({
 				type: "DELETE_PLAYLIST",
 				payload: response.data.deletedPlaylist,
@@ -237,9 +291,11 @@ export const renamePlaylist = async ({
 	playlistId,
 	newName,
 	token,
+	setDisableDeleteBtn,
 }) => {
 	try {
 		toast.loading("Please wait");
+		setDisableDeleteBtn(true);
 		const response = await axios.post(
 			`${API_URL}/playlist/update/${playlistId}`,
 			{
@@ -251,6 +307,7 @@ export const renamePlaylist = async ({
 		);
 		if (response.data.success === true) {
 			toast.dismiss();
+			setDisableDeleteBtn(false);
 			dispatch({
 				type: "RENAME_PLAYLIST",
 				payload: response.data.updatedPlaylistName,
@@ -288,9 +345,15 @@ export const addToHistory = async ({ dispatch, _id, token }) => {
 		toast.error(err?.response?.data?.message);
 	}
 };
-export const deleteFromHistory = async ({ dispatch, _id, token }) => {
+export const deleteFromHistory = async ({
+	dispatch,
+	_id,
+	token,
+	setDisableHistoryBtn,
+}) => {
 	try {
 		toast.loading("Please wait");
+		setDisableHistoryBtn(true);
 		const response = await axios.delete(
 			`${API_URL}/history/${_id}`,
 
@@ -300,6 +363,7 @@ export const deleteFromHistory = async ({ dispatch, _id, token }) => {
 		);
 		if (response.data.success === true) {
 			toast.dismiss();
+			setDisableHistoryBtn(false);
 			dispatch({
 				type: "DELETE_FROM_HISTORY",
 				payload: response.data.history,
